@@ -4,7 +4,7 @@ import { analyzePerson, assessDate, createDateSession, dateMatchesProfiles, gene
 import { modelEnabled, modelName } from './providers';
 import type { DateSession, ImportJob, Person, ProviderConfig } from './types';
 import { EngineError, verifyProfileIdentity } from './validation';
-import { decrypt, DEMO_OWNER, encrypt, getRecord, leaseJob, listRecords, replaceDemo, reserveAnonymousModel, saveRecord } from './store';
+import { createEntityJob, decrypt, DEMO_OWNER, encrypt, enqueueAnalysisJob, getRecord, leaseJob, listRecords, replaceDemo, reserveAnonymousModel, saveRecord } from './store';
 
 export interface Job {
   id: string; kind: 'import' | 'analysis' | 'date'; status: 'pending' | 'running' | 'complete' | 'failed';
@@ -64,6 +64,16 @@ function newJob(kind: Job['kind'], values: Partial<Job>): Job {
   return { id: crypto.randomUUID(), kind, status: 'pending', attempts: 0, nextAttemptAt: 0, createdAt: now, updatedAt: now, ...values };
 }
 
+async function operationId(prefix: string, input: unknown): Promise<string> {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(input)));
+  return `${prefix}-${Array.from(new Uint8Array(digest)).map(byte => byte.toString(16).padStart(2, '0')).join('')}`;
+}
+
+async function analysisJob(person: Person): Promise<Job> {
+  const revision = person.analysis?.createdAt ?? person.sources.map(source => [source.id, source.retrievedAt]);
+  return newJob('analysis', { id: await operationId('analysis', { personId: person.id, revision }), personId: person.id });
+}
+
 export async function importPerson(owner: string, body: Record<string, unknown>) {
   const urls = normalizeProfileUrls({ linkedinUrl: String(body.linkedinUrl || ''), instagramUrl: String(body.instagramUrl || '') });
   const state = await stateFor(owner);
@@ -72,21 +82,20 @@ export async function importPerson(owner: string, body: Record<string, unknown>)
   const ownPeople = await listRecords<Person>('person', owner, false);
   if (ownPeople.length >= 35 && !existing) throw new EngineError('RUN_LIMIT', 'This session already has 35 people. Open the saved cohort or continue with existing profiles.', false, 429);
   const now = new Date().toISOString();
-  const person: Person = { id: existing?.id || crypto.randomUUID(), name: new URL(urls.linkedinUrl).pathname.split('/')[2].replace(/[-_]/g, ' '), ...urls,
+  const person: Person = { id: existing?.id || await operationId('person', urls), name: new URL(urls.linkedinUrl).pathname.split('/')[2].replace(/[-_]/g, ' '), ...urls,
     status: 'pending', sources: [], identityStatus: 'unverified', createdAt: now, updatedAt: now };
-  await saveRecord('person', person, owner);
-  const job = newJob('import', { personId: person.id });
-  await saveRecord('job', job, owner);
-  return { person, job };
+  const job = newJob('import', { id: `import-${person.id}`, personId: person.id });
+  const created = await createEntityJob('person', person, job, owner);
+  return { person: (await getRecord<Person>('person', person.id, owner, false))!, job: (await getRecord<Job>('job', job.id, owner, false))!, ...(!created ? { reused: true } : {}) };
 }
 
 export async function analyze(owner: string, personId: string) {
   const person = await getRecord<Person>('person', personId, owner);
   if (!person) throw new EngineError('NOT_FOUND', 'Profile not found.', false, 404);
+  if (['pending', 'importing'].includes(person.status) || person.sources.length !== 2) throw new EngineError('PROFILE_NOT_READY', 'Wait for both public profile sources before analyzing this person.');
   const existing = (await listRecords<Job>('job', owner, false)).find(job => job.personId === personId && job.kind === 'analysis' && ['pending', 'running'].includes(job.status));
   if (existing) return { job: existing };
-  const job = newJob('analysis', { personId });
-  await saveRecord('job', job, owner);
+  const job = await enqueueAnalysisJob(await analysisJob(person), owner);
   return { job };
 }
 
@@ -94,18 +103,21 @@ export async function startDate(owner: string, aId: string, bId: string) {
   const [a, b, config, dates] = await Promise.all([getRecord<Person>('person', aId, owner), getRecord<Person>('person', bId, owner), configFor(owner), listRecords<DateSession>('date', owner)]);
   if (!a || !b || a.status !== 'ready' || b.status !== 'ready') throw new EngineError('PROFILE_NOT_READY', 'Choose two profiles with completed analyses.');
   if (a.id === b.id) throw new EngineError('SAME_PERSON', 'Choose two different agents.');
-  const prior = dates.find(date => [date.personAId, date.personBId].includes(aId) && [date.personAId, date.personBId].includes(bId) && date.mode === (modelEnabled(config) ? 'llm' : 'rules') && date.status !== 'failed' && dateMatchesProfiles(date, a, b));
+  const matching = dates.filter(date => [date.personAId, date.personBId].includes(aId) && [date.personAId, date.personBId].includes(bId) && date.mode === (modelEnabled(config) ? 'llm' : 'rules') && dateMatchesProfiles(date, a, b));
+  const prior = matching.find(date => date.status !== 'failed');
   if (prior) return { date: prior, reused: true };
+  const failed = matching.find(date => date.status === 'failed');
   const ownDates = await listRecords<DateSession>('date', owner, false);
-  if (ownDates.length >= 75) throw new EngineError('RUN_LIMIT', 'This session has reached its date limit.', false, 429);
-  const date = createDateSession(aId, bId, modelEnabled(config) ? 'llm' : 'rules');
-  date.profileSnapshots = structuredClone({ [a.id]: a, [b.id]: b });
+  if (ownDates.length >= 75 && !failed) throw new EngineError('RUN_LIMIT', 'This session has reached its date limit.', false, 429);
+  const mode = modelEnabled(config) ? 'llm' : 'rules';
+  const date = failed ? { ...failed, status: 'pending' as const, error: undefined } : createDateSession(aId, bId, mode);
+  if (!failed) date.id = await operationId('date', { mode, profiles: [a, b].map(person => ({ id: person.id, revision: person.analysis!.createdAt })).sort((left, right) => left.id.localeCompare(right.id)) });
+  date.profileSnapshots ??= structuredClone({ [a.id]: a, [b.id]: b });
   date.generation = 'live';
   if (modelEnabled(config)) date.model = modelName(config);
-  await saveRecord('date', date, owner);
-  const job = newJob('date', { dateId: date.id });
-  await saveRecord('job', job, owner);
-  return { date, job };
+  const job = newJob('date', { id: `date-job-${date.id}`, dateId: date.id });
+  const created = await createEntityJob('date', date, job, owner);
+  return { date: (await getRecord<DateSession>('date', date.id, owner, false))!, job: (await getRecord<Job>('job', job.id, owner, false))!, ...(!created ? { reused: true } : {}) };
 }
 
 export async function scheduleCohort(owner: string) {
@@ -162,7 +174,7 @@ export async function processNext(owner: string, dateId?: string): Promise<{ pro
         person.status = 'analyzing';
         person.updatedAt = new Date().toISOString();
         await saveRecord('person', person, owner);
-        await saveRecord('job', newJob('analysis', { personId: person.id }), owner);
+        await enqueueAnalysisJob(await analysisJob(person), owner);
         job.status = 'complete';
       } else { job.nextAttemptAt = Date.now() + 4000; }
     } else if (job.kind === 'analysis') {

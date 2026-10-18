@@ -30,7 +30,7 @@ An optional Groq key selects Groq instead. `MODEL_PROVIDER=rules` explicitly ena
 
 ## Durable jobs, privacy and rankings
 
-D1 stores source records, profiles, transcripts and job checkpoints. A lease prevents two browser requests from executing the same job simultaneously. Each request advances one retrieval, analysis, conversation or assessment step. The browser processes jobs while open; a refresh resumes saved progress. There is no unattended background worker or scheduler.
+D1 stores source records, profiles, transcripts and job checkpoints. Stable operation IDs and transactional entity/job creation deduplicate simultaneous imports, reanalyses, and reversed date requests. Failed dates resume their stored turns and assessments. A lease prevents two browser requests from executing the same job simultaneously. Each request advances one retrieval, analysis, conversation or assessment step. The browser processes jobs while open; a refresh resumes saved progress. There is no unattended background worker or scheduler.
 
 A signed-in ChatGPT account is not required by the app's own session model. An HTTP-only cookie isolates visitor records; the cached demo is shared read-only data. Provider keys are encrypted with AES-GCM using a server-held secret. The `?demo=1` API returns only saved demonstration data and the interface disables editing.
 

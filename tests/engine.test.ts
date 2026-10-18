@@ -203,6 +203,19 @@ test('direct LinkedIn parser rejects an authwall and extracts only a matching st
   assert.match(source.content, /An author and teacher/);
 });
 
+test('LinkedIn ingestion requires an exact official profile URL even when an identifier matches', () => {
+  const url = 'https://www.linkedin.com/in/publicperson/';
+  const row = { '@type': 'Person', name: 'Public Person', description: 'An author and teacher.' };
+  for (const returnedUrl of ['https://www.linkedin.com/company/publicperson/', `${url}extra/`, 'https://linkedin.com.evil.test/in/publicperson/', 'https://www.linkedin.com/in/publicperson-other/']) {
+    const html = `<script type="application/ld+json">${JSON.stringify({ ...row, url: returnedUrl })}</script>`;
+    assert.throws(() => parsePublicLinkedinHtml(html, url), /different account/);
+    assert.throws(() => sourceFromActor('linkedin', { publicIdentifier: 'publicperson', linkedinUrl: returnedUrl, fullName: row.name, about: row.description }, url), /different account/);
+  }
+  const graph = { '@graph': [{ ...row, url: `${url}extra/` }, { ...row, url: 'https://fr.linkedin.com/in/publicperson?trk=test' }] };
+  const source = parsePublicLinkedinHtml(`<script type="application/ld+json">${JSON.stringify(graph)}</script>`, url);
+  assert.equal(source.metadata!.name, 'Public Person');
+});
+
 test('no-token public import refuses redirected external destinations', async () => {
   const person = profile('noexternals');
   let calls = 0;

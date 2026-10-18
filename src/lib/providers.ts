@@ -120,6 +120,17 @@ function jsonRecords(value: unknown, depth = 0): RecordValue[] {
   return [row, ...Object.values(row).slice(0, 100).flatMap(item => jsonRecords(item, depth + 1))];
 }
 
+function matchesLinkedinAccount(candidate: string, expected: string): boolean {
+  try {
+    const actual = new URL(candidate);
+    const requested = new URL(expected);
+    return ['https:', 'http:'].includes(actual.protocol) && !actual.username && !actual.password && !actual.port
+      && /^(?:www\.|[a-z]{2}\.)?linkedin\.com$/i.test(actual.hostname)
+      && /^\/in\/[^/]+\/?$/.test(actual.pathname)
+      && actual.pathname.replace(/\/$/, '').toLowerCase() === requested.pathname.replace(/\/$/, '').toLowerCase();
+  } catch { return false; }
+}
+
 /** Public embed data contains owner-bound visibility flags; SEO metadata alone never verifies public status. */
 export function parsePublicInstagramHtml(profileHtml: string, embedHtml: string, url: string): SourceDocument {
   const username = new URL(url).pathname.split('/')[1].toLowerCase();
@@ -158,14 +169,13 @@ export function parsePublicLinkedinHtml(html: string, url: string): SourceDocume
   const metadata = metaTags(html);
   const expected = new URL(url).pathname.split('/')[2].toLowerCase();
   const records = jsonDocuments(html).flatMap(document => jsonRecords(document));
-  const person = records.find(row => row['@type'] === 'Person' && (!row.url || string(row.url).toLowerCase().includes(`/in/${expected}`)));
-  if (!person) throw new EngineError('LINKEDIN_ACCESS_BLOCKED', 'LinkedIn did not expose readable public profile data. Connect an Apify token to import this account.', false, 422);
-  const ownUrl = string(person.url || person['@id'] || metadata['og:url'], 2048);
-  if (!ownUrl) throw new EngineError('SOURCE_MISMATCH', 'LinkedIn did not identify the source account for its structured person.');
-  if (ownUrl) {
-    let actual: URL;
-    try { actual = new URL(ownUrl); } catch { throw new EngineError('SOURCE_MISMATCH', 'LinkedIn returned an invalid account URL.'); }
-    if (!/^(?:www\.|[a-z]{2}\.)?linkedin\.com$/.test(actual.hostname) || actual.pathname.split('/')[2]?.toLowerCase() !== expected) throw new EngineError('SOURCE_MISMATCH', 'LinkedIn returned a different account.');
+  const people = records.filter(row => row['@type'] === 'Person');
+  if (!people.length) throw new EngineError('LINKEDIN_ACCESS_BLOCKED', 'LinkedIn did not expose readable public profile data. Connect an Apify token to import this account.', false, 422);
+  const sourceUrl = (row: RecordValue) => string(row.url || row['@id'] || (people.length === 1 ? metadata['og:url'] : ''), 2048);
+  const person = people.find(row => matchesLinkedinAccount(sourceUrl(row), url));
+  if (!person) {
+    if (people.every(row => !sourceUrl(row))) throw new EngineError('SOURCE_MISMATCH', 'LinkedIn did not identify the source account for its structured person.');
+    throw new EngineError('SOURCE_MISMATCH', 'LinkedIn returned a different account.');
   }
   const name = string(person.name, 160);
   if (!name) throw new EngineError('INSUFFICIENT_PROFILE', 'LinkedIn did not return a named profile.');
@@ -254,6 +264,7 @@ export function sourceFromActor(platform: Platform, raw: unknown, url: string): 
     }
   } else {
     const returnedUrl = string(row.linkedinUrl ?? row.url, 2048);
+    if (returnedUrl && !matchesLinkedinAccount(returnedUrl, url)) throw new EngineError('SOURCE_MISMATCH', 'LinkedIn returned a different account.');
     username = string(row.publicIdentifier, 200).toLowerCase();
     const expected = new URL(url).pathname.split('/')[2].toLowerCase();
     let returnedIdentifier = username;

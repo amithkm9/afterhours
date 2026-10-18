@@ -1,6 +1,6 @@
 # Build status
 
-The application and completed 25-person model demo are implemented and locally validated. **The challenge is not yet submission-complete:** public hosting, a public GitHub repository, a YouTube video, and fresh hosted link ingestion remain unverified.
+The application and completed 25-person model demo are implemented and locally validated. **The challenge is not yet submission-complete:** public hosting, GitHub source publication, a YouTube video, and fresh hosted link ingestion remain unfinished.
 
 ## Completed
 
@@ -9,8 +9,9 @@ The application and completed 25-person model demo are implemented and locally v
 - 25 retained person agents completed 25 dates: 150 alternating turns and 50 independent assessments. Every person has two dates.
 - All 25 dates contain immutable participant-profile snapshots, preserving the evidence used before later reanalysis.
 - Every person has 24 ranked candidates: two with date evidence and 22 explicitly untested profile estimates.
+- Atomic duplicate-request prevention and failed-date resume retain completed turns and assessments. Frontend retries, profile-first import navigation, queue feedback, and shortlist refresh were repaired.
 - Session-isolated persistence, encrypted optional credentials, resumable leased jobs, direct public-page parsers, anonymous inference, and optional Groq/Apify adapters.
-- Final post-cleanup validation passed: 39 tests, TypeScript checking, lint, the official Sites production build, and the read-only demo export.
+- Final post-cleanup validation passed: 46 tests, TypeScript checking, lint, the official Sites production build, and the read-only demo export.
 - Safari QA exercised the actual React read-only export: profiles, source quotations, conversations, assessments, and rankings.
 - A fresh anonymous `openai-fast` smoke run completed six validated turns and two independent assessments. This proves a provider-level path, not hosted ingestion or semantic accuracy of every reply.
 
@@ -18,7 +19,7 @@ The application and completed 25-person model demo are implemented and locally v
 
 - **Public live/demo hosting:** the source helper retry at 23:25 UTC on 2026-10-18 still failed to resolve `git.chatgpt-team.site`. No successful source push or verified deployment URL is recorded.
 - **Fresh links on a hosted app:** unverified. Direct LinkedIn retrieval can return an authentication wall. Optional Apify requires a valid account/token and available allowance.
-- **Public GitHub:** `gh` authentication is invalid; no public `amithkm9/after-hours-agents` repository was found, and no Git remote is configured. The authenticated connector cannot create a repository.
+- **Public GitHub:** https://github.com/amithkm9/afterhours exists and is public; local `origin` points to it. The first connector write returned HTTP 403, “Resource not accessible by integration.” Source upload awaits repository write access. Local `gh` authentication remains invalid; shell Git cannot resolve `github.com`.
 - **YouTube:** no completed recording/upload or accessible video URL is recorded. The required video is at most three minutes, shows profiles before rankings, and includes actual agent exchanges.
 - **Runtime browser check:** this sandbox rejects listening sockets with `EPERM`; handler tests and the read-only export do not replace a hosted browser-to-server check.
 

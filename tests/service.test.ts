@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { resetDatabase, testEnvironment } from './helpers/d1';
+import type { DateSession, Person } from '../src/lib/types';
+import type { Job } from '../src/lib/service';
 const { analyze, configFor, importPerson, processNext, rankings, startDate, stateFor, updateSettings } = await import('../src/lib/service');
-const { getRecord, saveRecord } = await import('../src/lib/store');
+const { getRecord, listRecords, saveRecord } = await import('../src/lib/store');
 
 test('saved cohort initializes once, ranks all other people and reuses completed demo dates', async () => {
   const database = resetDatabase();
@@ -107,4 +109,124 @@ test('starting a date after reanalysis creates a fresh session and retains the o
     const retained = await getRecord<typeof first.date>('date', first.date.id, 'owner-a', false);
     assert.deepEqual(retained!.profileSnapshots![a.id], snapshot);
   } finally { database.close(); }
+});
+
+test('concurrent canonical imports, reanalyses and reversed date submissions each create one operation', async () => {
+  const database = resetDatabase();
+  try {
+    const state = await stateFor('owner-a');
+    const urls = { linkedinUrl: 'https://linkedin.com/in/concurrent-person?trk=test', instagramUrl: 'https://instagram.com/concurrent.person/?igsh=test' };
+    const imports = await Promise.all(Array.from({ length: 8 }, () => importPerson('owner-a', urls)));
+    assert.equal(new Set(imports.map(result => result.person.id)).size, 1);
+    assert.equal((await listRecords<Person>('person', 'owner-a', false)).length, 1);
+    assert.equal((await listRecords<Job>('job', 'owner-a', false)).filter(job => job.kind === 'import').length, 1);
+    await assert.rejects(analyze('owner-a', imports[0].person.id), /Wait for both/);
+
+    const analyses = await Promise.all(Array.from({ length: 8 }, () => analyze('owner-a', state.people[0].id)));
+    assert.equal(new Set(analyses.map(result => result.job.id)).size, 1);
+    assert.equal((await listRecords<Job>('job', 'owner-a', false)).filter(job => job.kind === 'analysis').length, 1);
+
+    const [a, b] = state.people;
+    const dates = await Promise.all(Array.from({ length: 8 }, (_, index) => startDate('owner-a', index % 2 ? b.id : a.id, index % 2 ? a.id : b.id)));
+    assert.equal(new Set(dates.map(result => result.date.id)).size, 1);
+    assert.equal((await listRecords<DateSession>('date', 'owner-a', false)).length, 1);
+    assert.equal((await listRecords<Job>('job', 'owner-a', false)).filter(job => job.kind === 'date').length, 1);
+  } finally { database.close(); }
+});
+
+test('a failed date resumes its stored turns and completes exactly six turns and two assessments', async () => {
+  const database = resetDatabase();
+  const originalNow = Date.now;
+  let clock = originalNow();
+  Date.now = () => clock;
+  try {
+    const [a, b] = (await stateFor('owner-a')).people;
+    const started = await startDate('owner-a', a.id, b.id);
+    for (let index = 0; index < 3; index++) { await processNext('owner-a', started.date.id); clock += 1000; }
+    const partial = (await getRecord<DateSession>('date', started.date.id, 'owner-a', false))!;
+    const job = (await listRecords<Job>('job', 'owner-a', false)).find(value => value.dateId === partial.id)!;
+    assert.equal(partial.turns.length, 3);
+    await saveRecord('date', { ...partial, status: 'failed', error: 'Temporary model failure' }, 'owner-a');
+    await saveRecord('job', { ...job, status: 'failed', attempts: 3, error: 'Temporary model failure', leaseUntil: 0 }, 'owner-a');
+
+    const resumed = await startDate('owner-a', b.id, a.id);
+    assert.equal(resumed.date.id, partial.id);
+    assert.deepEqual(resumed.date.turns, partial.turns);
+    assert.equal(resumed.date.status, 'pending');
+    assert.ok('job' in resumed);
+    assert.equal(resumed.job.attempts, 0);
+    for (let index = 0; index < 5; index++) { await processNext('owner-a', partial.id); clock += 1000; }
+    const complete = (await getRecord<DateSession>('date', partial.id, 'owner-a', false))!;
+    assert.equal(complete.status, 'complete');
+    assert.equal(complete.turns.length, 6);
+    assert.equal(new Set(complete.turns.map(turn => turn.id)).size, 6);
+    assert.deepEqual(complete.turns.slice(0, 3), partial.turns);
+    assert.equal(complete.assessments.length, 2);
+    assert.equal((await processNext('owner-a', partial.id)).processed, false);
+    assert.equal((await rankings('owner-a', a.id)).rankings.find(entry => entry.candidateId === b.id)!.dateId, complete.id);
+  } finally { Date.now = originalNow; database.close(); }
+});
+
+test('a new readable public source pair imports and analyzes, while a LinkedIn authwall fails honestly', async () => {
+  const database = resetDatabase();
+  const originalFetch = globalThis.fetch;
+  try {
+    const urls = { linkedinUrl: 'https://www.linkedin.com/in/new-public-person/', instagramUrl: 'https://www.instagram.com/new.public.person/' };
+    const linkedin = `<script type="application/ld+json">${JSON.stringify({ '@type': 'Person', name: 'New Person', url: urls.linkedinUrl, description: 'Software engineer and photography enthusiast.' })}</script>`;
+    const instagram = `<meta name="description" content="New Person on Instagram: &quot;I enjoy photography. ${urls.linkedinUrl}&quot;">`;
+    const context = { username: 'new.public.person', full_name: 'New Person', graphql_media: [{ shortcode_media: { shortcode: 'NEWPOST', owner: { username: 'new.public.person', is_private: false }, edge_media_to_caption: { edges: [{ node: { text: 'I enjoy hiking and photography.' } }] } } }] };
+    const embed = `<script>${JSON.stringify({ contextJSON: JSON.stringify({ context }) })}</script>`;
+    globalThis.fetch = (async input => new Response(String(input).includes('linkedin.com') ? linkedin : String(input).endsWith('/embed/') ? embed : instagram)) as typeof fetch;
+    const started = await importPerson('owner-a', urls);
+    const imported = await processNext('owner-a');
+    assert.equal(imported.job!.status, 'complete');
+    assert.equal(imported.person!.sources.length, 2);
+    assert.equal(imported.person!.identityStatus, 'verified');
+    const analyzed = await processNext('owner-a');
+    assert.equal(analyzed.person!.id, started.person.id);
+    assert.equal(analyzed.person!.status, 'ready');
+    assert.equal((await rankings('owner-a', started.person.id)).rankings.length, 25);
+
+    globalThis.fetch = (async () => new Response('<script>location.href="/authwall"</script>')) as typeof fetch;
+    await importPerson('owner-a', { linkedinUrl: 'https://www.linkedin.com/in/blocked-person/', instagramUrl: 'https://www.instagram.com/blocked.person/' });
+    const blocked = await processNext('owner-a');
+    assert.equal(blocked.job!.status, 'failed');
+    assert.equal(blocked.person!.status, 'failed');
+    assert.match(blocked.job!.error!, /LinkedIn did not expose/);
+    assert.equal(blocked.person!.analysis, undefined);
+    assert.equal(blocked.person!.sources.length, 0);
+  } finally { globalThis.fetch = originalFetch; database.close(); }
+});
+
+test('model failures retry only the current step and successful turns reset the retry budget', async () => {
+  const database = resetDatabase();
+  const originalFetch = globalThis.fetch;
+  const originalNow = Date.now;
+  let clock = originalNow();
+  Date.now = () => clock;
+  try {
+    await updateSettings('owner-a', { groqApiKey: 'test-retry-key' });
+    const state = await stateFor('owner-a');
+    const a = state.people[0];
+    const b = state.people.find(person => person.id !== a.id && !state.dates.some(date => [date.personAId, date.personBId].includes(a.id) && [date.personAId, date.personBId].includes(person.id)))!;
+    const started = await startDate('owner-a', a.id, b.id);
+    let calls = 0;
+    globalThis.fetch = (async () => {
+      calls++;
+      if (calls % 2) return Response.json({ error: 'rate limit' }, { status: 429 });
+      const self = calls === 2 ? a : b;
+      return Response.json({ choices: [{ finish_reason: 'stop', message: { content: JSON.stringify({ message: "I'd suggest a short conversation about the documented topic and leave the timing flexible. Which part would you explore?", evidenceIds: [self.analysis!.claims[0].id] }) } }] });
+    }) as typeof fetch;
+    for (let step = 0; step < 2; step++) {
+      const failed = await processNext('owner-a', started.date.id);
+      assert.equal(failed.job!.status, 'pending');
+      assert.equal(failed.job!.attempts, 1);
+      clock += 21_000;
+      const succeeded = await processNext('owner-a', started.date.id);
+      assert.equal(succeeded.job!.attempts, 0);
+      assert.equal(succeeded.date!.turns.length, step + 1);
+      clock += 7000;
+    }
+    assert.equal(calls, 4);
+  } finally { globalThis.fetch = originalFetch; Date.now = originalNow; database.close(); }
 });

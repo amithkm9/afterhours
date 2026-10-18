@@ -31,6 +31,30 @@ export async function saveRecord<T extends { id: string }>(kind: string, value: 
     .bind(`${owner}:${kind}:${value.id}`, kind, owner, JSON.stringify(value), now, now).run();
 }
 
+/** Create an entity and its first job together; concurrent duplicate submissions cannot reset active work. */
+export async function createEntityJob<T extends { id: string; status: string }, J extends { id: string; status: string }>(kind: 'person' | 'date', entity: T, job: J, owner: string): Promise<boolean> {
+  const db = database();
+  const now = new Date().toISOString();
+  const entityId = `${owner}:${kind}:${entity.id}`;
+  const result = await db.batch([
+    db.prepare("INSERT INTO records (id, kind, owner, value, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at WHERE json_extract(records.value, '$.status') = 'failed'")
+      .bind(entityId, kind, owner, JSON.stringify(entity), now, now),
+    db.prepare("INSERT INTO records (id, kind, owner, value, created_at, updated_at) SELECT ?, ?, ?, ?, ?, ? WHERE EXISTS (SELECT 1 FROM records WHERE id = ? AND json_extract(value, '$.status') = 'pending') ON CONFLICT(id) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at WHERE json_extract(records.value, '$.status') IN ('complete', 'failed')")
+      .bind(`${owner}:job:${job.id}`, 'job', owner, JSON.stringify(job), now, now, entityId),
+  ]);
+  return result[0].meta.changes > 0;
+}
+
+/** A completed profile revision stays idempotent; failures may be retried explicitly. */
+export async function enqueueAnalysisJob<J extends { id: string }>(job: J, owner: string): Promise<J> {
+  const now = new Date().toISOString();
+  await database().prepare("INSERT INTO records (id, kind, owner, value, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at WHERE json_extract(records.value, '$.status') = 'failed'")
+    .bind(`${owner}:job:${job.id}`, 'job', owner, JSON.stringify(job), now, now).run();
+  const stored = await getRecord<J>('job', job.id, owner, false);
+  if (!stored) throw new Error('The analysis job could not be saved.');
+  return stored;
+}
+
 /** Replace the read-only demonstration as one transaction, leaving visitor records intact. */
 export async function replaceDemo(people: { id: string }[], dates: { id: string }[], markerId: string): Promise<void> {
   const db = database();

@@ -2,9 +2,11 @@
 
 ## Automated application checks
 
-The final post-cleanup suite has **39 passing tests**. TypeScript checking, lint, the official Sites production build, and the read-only demo export also passed. The source package excludes ignored/local artifacts; the credential-pattern scan found zero matches. A pattern scan is not a guarantee that arbitrary secrets are absent.
+The final post-cleanup suite has **46 passing tests**. TypeScript checking, lint, the official Sites production build, and the read-only demo export also passed. The source package excludes ignored/local artifacts; the credential-pattern scan found zero matches. A pattern scan is not a guarantee that arbitrary secrets are absent.
 
 Coverage includes URL validation; account/privacy/source binding; exact quotations; independent agent contexts; alternating turns; directional rankings and cohort coverage; bounded scraper requests; public HTML parsers; session ownership; credential encryption; transactional demo replacement; atomic leases; actual HTTP handlers; anonymous-provider quota reservations; and immutable date evidence after reanalysis.
+
+The second audit also covers concurrent canonical imports/reanalyses/reversed date requests, resuming saved failed dates, retry budgets per model step, exact LinkedIn account paths, HTTPS cookies, private provider settings, repeatable scheduling, and all 600 ranking entries. Fresh-import success and authwall failures are tested with controlled HTTP fixtures, not claimed as production account retrieval.
 
 HTTP tests invoke real handlers against SQLite through a D1-compatible adapter. They do not establish a reachable production deployment or listening local server.
 
@@ -31,6 +33,8 @@ A separate fresh smoke run completed six validated turns and two independent ass
 Earlier probes produced an unsupported first-person routine and invented book content; these were not accepted as the final demo. Guards and stronger evidence requirements were added. Schema and citation checks cannot establish the truth of every implication.
 
 ## Browser checks and limits
+
+Chrome also opened the updated read-only export and displayed the 25-person/25-date cohort; user activity interrupted further Chrome interaction. Source inspection and compilation checked the new retry, duplicate-submit, navigation, stale-response and shortlist recovery behavior; browser-to-server mutation remains unverified.
 
 Safari opened the actual React read-only export and exercised cohort navigation, profiles, quotations, source links, conversations, assessments, and 24-candidate rankings. This export cannot perform fresh imports or generation.
 

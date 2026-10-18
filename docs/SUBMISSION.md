@@ -21,7 +21,7 @@ New model operations use anonymous Pollinations `openai-fast` without an API key
 - YouTube video, at most three minutes: **pending recording/upload**.
 - Completed 25-person demo: local `outputs/after-hours-demo.html`; **public URL pending deployment**.
 - Live website accepting evaluator-provided links: **pending deployment and hosted fresh-link verification**.
-- Public GitHub repository: **pending creation/publication and verified access**.
+- Public GitHub repository: https://github.com/amithkm9/afterhours — **confirmed public; source upload blocked by integration write permissions**.
 
 ## Acceptance checks
 

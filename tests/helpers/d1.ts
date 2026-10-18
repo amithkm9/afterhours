@@ -20,15 +20,16 @@ export function resetDatabase() {
         bind(...parameters: (string | number | null)[]) { values = parameters; return statement; },
         async all() { return { results: sqlite.prepare(sql).all(...values), success: true }; },
         async first() { return sqlite.prepare(sql).get(...values) ?? null; },
-        async run() { const result = sqlite.prepare(sql).run(...values); return { success: true, meta: { changes: Number(result.changes) } }; },
+        execute() { const result = sqlite.prepare(sql).run(...values); return { success: true, meta: { changes: Number(result.changes) } }; },
+        async run() { return statement.execute(); },
       };
       return statement;
     },
-    async batch(statements: { run: () => Promise<unknown> }[]) {
+    async batch(statements: { execute: () => unknown }[]) {
       sqlite.exec('BEGIN');
       try {
         const result = [];
-        for (const statement of statements) result.push(await statement.run());
+        for (const statement of statements) result.push(statement.execute());
         sqlite.exec('COMMIT');
         return result;
       } catch (error) { sqlite.exec('ROLLBACK'); throw error; }

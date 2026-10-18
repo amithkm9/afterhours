@@ -19,7 +19,7 @@ Based on the five supplied screenshots. **Overall: not all requirements pass yet
 | Video shows analysis/profile pages first, agent exchanges, then rankings and website flow | Plan exists; recording and accessible video outstanding |
 | YouTube video at most three minutes | Outstanding: no verified URL |
 | Live website and completed-demo URLs | Outstanding: source push/deployment blocked by hosting Git DNS |
-| Public GitHub code repository | Outstanding: no verified public repository; CLI authentication invalid |
+| Public GitHub code repository | Public repository exists at https://github.com/amithkm9/afterhours; source upload is blocked by integration HTTP 403 and invalid local CLI authentication |
 | Overall explanation within 200 characters | Prepared: 199 characters in `docs/SUBMISSION.md` |
 | Technical explanation of Instagram/LinkedIn scraping | Prepared; distinguishes direct Instagram, cached LinkedIn excerpts, optional Apify |
 | Every advertised feature works when evaluated | Not established: local tests and provider smoke passed; hosted ingestion, migrations, and public access unverified |
