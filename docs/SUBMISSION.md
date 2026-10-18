@@ -18,10 +18,10 @@ New model operations use anonymous Pollinations `openai-fast` without an API key
 
 ## Required links
 
-- YouTube video, at most three minutes: **pending recording/upload**.
+- YouTube video, at most three minutes: **2:40 local draft recorded; final hosted-flow recording and YouTube upload pending**.
 - Completed 25-person demo: local `outputs/after-hours-demo.html`; **public URL pending deployment**.
 - Live website accepting evaluator-provided links: **pending deployment and hosted fresh-link verification**.
-- Public GitHub repository: https://github.com/amithkm9/afterhours — **confirmed public; source upload blocked by integration write permissions**.
+- Public GitHub repository: https://github.com/amithkm9/afterhours — **public; source commit `adb2cf7` verified on GitHub**.
 
 ## Acceptance checks
 
@@ -38,6 +38,6 @@ New model operations use anonymous Pollinations `openai-fast` without an API key
 - [ ] Video shows profiles before rankings and an actual adaptive agent exchange.
 - [ ] Video is at most three minutes with an accessible YouTube URL.
 - [ ] Live/demo URLs are accessible to evaluators.
-- [ ] GitHub repository is public and published files contain no credentials.
+- [x] GitHub repository is public and published files contain no credentials (verified source commit `adb2cf7`).
 
 See `docs/REQUIREMENTS.md`. Local checks do not replace missing public submission artifacts.

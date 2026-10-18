@@ -18,7 +18,7 @@ All dates are simulations. The real people have not participated or endorsed the
 
 ## Stack
 
-TypeScript, React, Vinext (Next.js-compatible app routes), Vite, Cloudflare Workers, D1 SQLite, Drizzle migrations, direct HTML/structured-data parsers, optional Apify actors, and structured model JSON with local schema and evidence validation. Hosting uses ChatGPT Sites.
+TypeScript, React, Vinext (Next.js-compatible app routes), Vite, Cloudflare Workers, D1 SQLite, Drizzle migrations, direct HTML/structured-data parsers, optional Apify actors, and structured model JSON with local schema and evidence validation. The app targets Cloudflare Workers; ChatGPT Sites integration is also retained.
 
 Main files: `app/page.tsx` (frontend), `app/api/[...path]/route.ts` (API), `src/lib/engine.ts` (agents/rankings), `src/lib/providers.ts` (retrieval/inference), `src/lib/store.ts` (persistence), and `src/lib/service.ts` (job orchestration).
 
@@ -42,6 +42,10 @@ npm run dev
 Open the printed URL. Add a person using their two official links. Open Connections to configure optional providers for the current browser session. Fresh imports are isolated from the saved demonstration.
 
 Local and hosted databases are separate. Sites applies committed schema migrations during publication. Production secrets belong in Sites runtime configuration, never `.openai/hosting.json`.
+
+## Deploy
+
+Follow [the Cloudflare deployment guide](docs/DEPLOYMENT.md) to create D1, configure the built Worker, apply migrations, and publish. Vercel requires runtime and database changes; this is not a standard Next.js deployment.
 
 ## Prepare the demonstration
 
