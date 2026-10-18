@@ -1,0 +1,2196 @@
+[
+  {
+    "personId": "aliabdaal",
+    "analysis": {
+      "summary": "Ali's public work connects productivity, content creation and building a lifestyle business. The sources show a creator and educator; personal routines and relationship needs remain unknown.",
+      "claims": [
+        {
+          "id": "aliabdaal-claim-1",
+          "category": "work",
+          "text": "YouTuber, podcaster and bestselling author",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "aliabdaal-linkedin",
+              "quote": "a YouTuber, podcaster, author of New York Times and Sunday Times bestseller"
+            }
+          ]
+        },
+        {
+          "id": "aliabdaal-claim-2",
+          "category": "work",
+          "text": "Author of Feel-Good Productivity",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "aliabdaal-instagram",
+              "quote": "NYT Bestselling Book: Feel-Good Productivity"
+            }
+          ]
+        },
+        {
+          "id": "aliabdaal-claim-3",
+          "category": "interest",
+          "text": "Productivity",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "aliabdaal-instagram",
+              "quote": "my science-backed productivity app"
+            }
+          ]
+        },
+        {
+          "id": "aliabdaal-claim-4",
+          "category": "interest",
+          "text": "Lifestyle businesses",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "aliabdaal-instagram",
+              "quote": "If I were starting a business today with no audience, I’d keep it simple."
+            }
+          ]
+        },
+        {
+          "id": "aliabdaal-claim-5",
+          "category": "interest",
+          "text": "Content creation",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "aliabdaal-instagram",
+              "quote": "I’d choose a skill I already have like content creation, marketing"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Productivity",
+        "Lifestyle businesses",
+        "Content creation"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "sahilbloom",
+    "analysis": {
+      "summary": "Sahil publishes books and reflections on growth, with a recurring interest in how people treat one another. His sources support conversation about generous appreciation and personal challenges, without establishing partner preferences.",
+      "claims": [
+        {
+          "id": "sahilbloom-claim-1",
+          "category": "work",
+          "text": "Author of The 5 Types of Wealth",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "sahilbloom-linkedin",
+              "quote": "author of The 5 Types of Wealth"
+            }
+          ]
+        },
+        {
+          "id": "sahilbloom-claim-2",
+          "category": "work",
+          "text": "Founder of Wild Roman",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "sahilbloom-instagram",
+              "quote": "Founder @wildromanofficial"
+            }
+          ]
+        },
+        {
+          "id": "sahilbloom-claim-3",
+          "category": "quality",
+          "text": "Publicly praises people who celebrate others",
+          "kind": "observed",
+          "confidence": 0.87,
+          "evidence": [
+            {
+              "sourceId": "sahilbloom-instagram",
+              "quote": "This is something I immediately love about a person. They just seem to glow about others."
+            }
+          ]
+        },
+        {
+          "id": "sahilbloom-claim-4",
+          "category": "interest",
+          "text": "Personal growth",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "sahilbloom-instagram",
+              "quote": "#growth #mindset #discipline"
+            }
+          ]
+        },
+        {
+          "id": "sahilbloom-claim-5",
+          "category": "interest",
+          "text": "Trying physical challenges",
+          "kind": "inferred",
+          "confidence": 0.64,
+          "evidence": [
+            {
+              "sourceId": "sahilbloom-instagram",
+              "quote": "What’s your physical side quest going to be?"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Personal growth",
+        "Trying physical challenges"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "neuranne",
+    "analysis": {
+      "summary": "Anne-Laure studies curiosity and writes about experimentation. Her public material offers starting points in neuroscience, reading and exploration; advice about an activity does not establish that it is a personal hobby.",
+      "claims": [
+        {
+          "id": "neuranne-claim-1",
+          "category": "work",
+          "text": "Neuroscientist at King's College London",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "neuranne-linkedin",
+              "quote": "I'm a neuroscientist at King's College London"
+            }
+          ]
+        },
+        {
+          "id": "neuranne-claim-2",
+          "category": "work",
+          "text": "Author of Tiny Experiments",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "neuranne-instagram",
+              "quote": "Author of Tiny Experiments"
+            }
+          ]
+        },
+        {
+          "id": "neuranne-claim-3",
+          "category": "interest",
+          "text": "Curiosity and exploration",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "neuranne-instagram",
+              "quote": "Neuroscientist studying curiosity"
+            }
+          ]
+        },
+        {
+          "id": "neuranne-claim-4",
+          "category": "interest",
+          "text": "Reading and attention",
+          "kind": "inferred",
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "sourceId": "neuranne-instagram",
+              "quote": "It gives your attention one continuous place to settle"
+            }
+          ]
+        },
+        {
+          "id": "neuranne-claim-5",
+          "category": "interest",
+          "text": "Everyday experimentation",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "neuranne-instagram",
+              "quote": "Think about the last time you tried cooking without a recipe or finding your way somewhere unfamiliar."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Curiosity and exploration",
+        "Reading and attention",
+        "Everyday experimentation"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "thedankoe",
+    "analysis": {
+      "summary": "Dan identifies two ventures he is building and describes an interest in making sense of difficult ideas. His short captions suggest questions about focus and repetitive routines, but provide little evidence about his actual schedule or hobbies.",
+      "claims": [
+        {
+          "id": "thedankoe-claim-1",
+          "category": "work",
+          "text": "Building Eden",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "thedankoe-instagram",
+              "quote": "building @edendotso"
+            }
+          ]
+        },
+        {
+          "id": "thedankoe-claim-2",
+          "category": "work",
+          "text": "Building Sonder",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "thedankoe-instagram",
+              "quote": "building @edendotso and @drink.sonder"
+            }
+          ]
+        },
+        {
+          "id": "thedankoe-claim-3",
+          "category": "quality",
+          "text": "Describes a drive to make sense of difficult ideas",
+          "kind": "observed",
+          "confidence": 0.9,
+          "evidence": [
+            {
+              "sourceId": "thedankoe-linkedin",
+              "quote": "I am obsessed with making sense of the non-sensical."
+            }
+          ]
+        },
+        {
+          "id": "thedankoe-claim-4",
+          "category": "interest",
+          "text": "Questioning repetitive routines",
+          "kind": "inferred",
+          "confidence": 0.66,
+          "evidence": [
+            {
+              "sourceId": "thedankoe-instagram",
+              "quote": "It’s far too easy to get stuck in the mundane day to day repetition that is modern life."
+            }
+          ]
+        },
+        {
+          "id": "thedankoe-claim-5",
+          "category": "interest",
+          "text": "Morning focus",
+          "kind": "inferred",
+          "confidence": 0.55,
+          "evidence": [
+            {
+              "sourceId": "thedankoe-instagram",
+              "quote": "1 hour. First thing in the morning."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Questioning repetitive routines",
+        "Morning focus"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "tiagoforte",
+    "analysis": {
+      "summary": "Tiago's public material centers on annual reflection, meaningful results and imagining possible futures. He explicitly allows different approaches to a life review, creating room for a conversation about structure without assuming a fixed personal routine.",
+      "claims": [
+        {
+          "id": "tiagoforte-claim-1",
+          "category": "work",
+          "text": "Writes Life in Perspective, about the annual life review",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "tiagoforte-instagram",
+              "quote": "Life in Perspective: The Art & Power of the Annual Life Review"
+            }
+          ]
+        },
+        {
+          "id": "tiagoforte-claim-2",
+          "category": "work",
+          "text": "LinkedIn lists Forte Labs",
+          "kind": "observed",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "sourceId": "tiagoforte-linkedin",
+              "quote": "Tiago Forte - Forte Labs"
+            }
+          ]
+        },
+        {
+          "id": "tiagoforte-claim-3",
+          "category": "interest",
+          "text": "Annual reflection",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "tiagoforte-instagram",
+              "quote": "There's no single right way to do an annual life review."
+            }
+          ]
+        },
+        {
+          "id": "tiagoforte-claim-4",
+          "category": "interest",
+          "text": "Imagining possible futures",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "tiagoforte-instagram",
+              "quote": "Close your eyes and picture one scene from a future you'd be proud to live."
+            }
+          ]
+        },
+        {
+          "id": "tiagoforte-claim-5",
+          "category": "quality",
+          "text": "Publicly favors reflection methods that fit one's circumstances",
+          "kind": "observed",
+          "confidence": 0.91,
+          "evidence": [
+            {
+              "sourceId": "tiagoforte-instagram",
+              "quote": "The best one fits your work and the season of life you're in."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Annual reflection",
+        "Imagining possible futures"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "marieforleo",
+    "analysis": {
+      "summary": "Marie's public work combines business education with the idea of building a life one enjoys. Her posts emphasize taking action before everything is perfect and learning through conversations with other founders.",
+      "claims": [
+        {
+          "id": "marieforleo-claim-1",
+          "category": "work",
+          "text": "LinkedIn lists Marie Forleo International",
+          "kind": "observed",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "sourceId": "marieforleo-linkedin",
+              "quote": "Marie Forleo - Marie Forleo International"
+            }
+          ]
+        },
+        {
+          "id": "marieforleo-claim-2",
+          "category": "work",
+          "text": "CEO and founder of B-School and TimeGenius",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "marieforleo-instagram",
+              "quote": "CEO + Founder #BSchool #TimeGenius"
+            }
+          ]
+        },
+        {
+          "id": "marieforleo-claim-3",
+          "category": "interest",
+          "text": "Business and life design",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "marieforleo-instagram",
+              "quote": "Build a business and life you love"
+            }
+          ]
+        },
+        {
+          "id": "marieforleo-claim-4",
+          "category": "interest",
+          "text": "Action over perfectionism",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "marieforleo-instagram",
+              "quote": "Perfectionism can feel like you’re being thorough. But sometimes, it’s just keeping you stuck."
+            }
+          ]
+        },
+        {
+          "id": "marieforleo-claim-5",
+          "category": "interest",
+          "text": "Learning from founders",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "marieforleo-instagram",
+              "quote": "Rewinding to this conversation with Anastasia Soare, founder of Anastasia Beverly Hills."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Business and life design",
+        "Action over perfectionism",
+        "Learning from founders"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "melrobbins",
+    "analysis": {
+      "summary": "Mel hosts a podcast, writes books and co-founded a business. Her public posts offer conversation about human connection and an actual hiking outing; a single outing does not establish an ongoing outdoor hobby.",
+      "claims": [
+        {
+          "id": "melrobbins-claim-1",
+          "category": "work",
+          "text": "Creator and host of The Mel Robbins Podcast",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "melrobbins-linkedin",
+              "quote": "creator and host of the award-winning The Mel Robbins Podcast"
+            }
+          ]
+        },
+        {
+          "id": "melrobbins-claim-2",
+          "category": "work",
+          "text": "Author of The Let Them Theory",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "melrobbins-instagram",
+              "quote": "Author @letthemtheory"
+            }
+          ]
+        },
+        {
+          "id": "melrobbins-claim-3",
+          "category": "work",
+          "text": "Co-founder of Pure Genius Protein",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "melrobbins-instagram",
+              "quote": "Co-founder @puregeniusprotein"
+            }
+          ]
+        },
+        {
+          "id": "melrobbins-claim-4",
+          "category": "interest",
+          "text": "Human connection",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "melrobbins-instagram",
+              "quote": "If someone you love has been on your mind lately"
+            }
+          ]
+        },
+        {
+          "id": "melrobbins-claim-5",
+          "category": "interest",
+          "text": "Outdoor experiences",
+          "kind": "inferred",
+          "confidence": 0.59,
+          "evidence": [
+            {
+              "sourceId": "melrobbins-instagram",
+              "quote": "took me hiking for my birthday"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Human connection",
+        "Outdoor experiences"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "adammgrant",
+    "analysis": {
+      "summary": "Adam's public work spans organizational psychology, writing and podcasting. His posts invite discussion about friendship and the difference between an immediate connection and earned trust; they do not establish his dating preferences.",
+      "claims": [
+        {
+          "id": "adammgrant-claim-1",
+          "category": "work",
+          "text": "Organizational psychologist at Wharton",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "adammgrant-instagram",
+              "quote": "Organizational psychologist @whartonschool"
+            }
+          ]
+        },
+        {
+          "id": "adammgrant-claim-2",
+          "category": "work",
+          "text": "LinkedIn identifies him as a Wharton professor",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "adammgrant-linkedin",
+              "quote": "Recognized as Wharton's top-rated professor"
+            }
+          ]
+        },
+        {
+          "id": "adammgrant-claim-3",
+          "category": "work",
+          "text": "Author of Think Again and Hidden Potential",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "adammgrant-instagram",
+              "quote": "author of THINK AGAIN and HIDDEN POTENTIAL"
+            }
+          ]
+        },
+        {
+          "id": "adammgrant-claim-4",
+          "category": "interest",
+          "text": "Trust and first impressions",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "adammgrant-instagram",
+              "quote": "clicking with someone doesn’t always mean we can trust them."
+            }
+          ]
+        },
+        {
+          "id": "adammgrant-claim-5",
+          "category": "interest",
+          "text": "Depth of social connection",
+          "kind": "inferred",
+          "confidence": 0.73,
+          "evidence": [
+            {
+              "sourceId": "adammgrant-instagram",
+              "quote": "Would you rather have 100 friends or 3 people who genuinely understand you?"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Trust and first impressions",
+        "Depth of social connection"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "shettyjay",
+    "analysis": {
+      "summary": "Jay is presented as an author, speaker, coach and host of On Purpose. His short public captions emphasize kindness and expressions of care, while revealing little about personal hobbies or relationship requirements.",
+      "claims": [
+        {
+          "id": "shettyjay-claim-1",
+          "category": "work",
+          "text": "Host of the On Purpose podcast",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "shettyjay-linkedin",
+              "quote": "award-winning podcast host of On Purpose"
+            }
+          ]
+        },
+        {
+          "id": "shettyjay-claim-2",
+          "category": "work",
+          "text": "Publicly identifies as an author, speaker and coach",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "shettyjay-instagram",
+              "quote": "Author,Podcaster,Speaker,Coach"
+            }
+          ]
+        },
+        {
+          "id": "shettyjay-claim-3",
+          "category": "interest",
+          "text": "Kindness and encouragement",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "shettyjay-instagram",
+              "quote": "We’re all pushing through something ❤️ Be kind today"
+            }
+          ]
+        },
+        {
+          "id": "shettyjay-claim-4",
+          "category": "interest",
+          "text": "Expressions of care",
+          "kind": "inferred",
+          "confidence": 0.65,
+          "evidence": [
+            {
+              "sourceId": "shettyjay-instagram",
+              "quote": "You'll never regret giving love"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Kindness and encouragement",
+        "Expressions of care"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "vanessavanedwards",
+    "analysis": {
+      "summary": "Vanessa's public identity is grounded in behavioral research and teaching communication. She explicitly describes conversation as her life's work, with posts that explore the uncertainty people can feel in social situations.",
+      "claims": [
+        {
+          "id": "vanessavanedwards-claim-1",
+          "category": "work",
+          "text": "Behavioral researcher and founder of Science of People",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "vanessavanedwards-linkedin",
+              "quote": "I’m a behavioral researcher, bestselling author, and founder of Science of People."
+            }
+          ]
+        },
+        {
+          "id": "vanessavanedwards-claim-2",
+          "category": "work",
+          "text": "Identifies as a Harvard instructor",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "vanessavanedwards-instagram",
+              "quote": "Harvard Instructor & Behavioral Researcher"
+            }
+          ]
+        },
+        {
+          "id": "vanessavanedwards-claim-3",
+          "category": "interest",
+          "text": "Conversation and communication",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "vanessavanedwards-instagram",
+              "quote": "Conversation is my life’s work."
+            }
+          ]
+        },
+        {
+          "id": "vanessavanedwards-claim-4",
+          "category": "interest",
+          "text": "Social perception",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "vanessavanedwards-instagram",
+              "quote": "They are not watching you nearly as closely as you think they are."
+            }
+          ]
+        },
+        {
+          "id": "vanessavanedwards-claim-5",
+          "category": "quality",
+          "text": "Uses everyday social scenarios in public communication",
+          "kind": "inferred",
+          "confidence": 0.68,
+          "evidence": [
+            {
+              "sourceId": "vanessavanedwards-instagram",
+              "quote": "What do you do when you are on the video call too early?"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Conversation and communication",
+        "Social perception"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "thechrisdo",
+    "analysis": {
+      "summary": "Chris's public work brings together design, branding, business education and creative collaboration. His posts also distinguish the appearance of being busy from meaningful action, which is a useful conversation theme rather than a private personality diagnosis.",
+      "claims": [
+        {
+          "id": "thechrisdo-claim-1",
+          "category": "work",
+          "text": "Founder and CEO of The Futur",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "thechrisdo-linkedin",
+              "quote": "Founder and CEO of The Futur"
+            }
+          ]
+        },
+        {
+          "id": "thechrisdo-claim-2",
+          "category": "work",
+          "text": "Describes over 27 years of brand-design experience",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "thechrisdo-linkedin",
+              "quote": "over 27 years of experience in brand design"
+            }
+          ]
+        },
+        {
+          "id": "thechrisdo-claim-3",
+          "category": "interest",
+          "text": "Personal branding",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "thechrisdo-instagram",
+              "quote": "Personal Branding/Sales Coach"
+            }
+          ]
+        },
+        {
+          "id": "thechrisdo-claim-4",
+          "category": "interest",
+          "text": "Creative print collaboration",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "thechrisdo-instagram",
+              "quote": "3 prints with @jamesvictore dropping soon."
+            }
+          ]
+        },
+        {
+          "id": "thechrisdo-claim-5",
+          "category": "interest",
+          "text": "Purposeful action",
+          "kind": "inferred",
+          "confidence": 0.66,
+          "evidence": [
+            {
+              "sourceId": "thechrisdo-instagram",
+              "quote": "It LOOKS like diligence... but it's actually AVOIDANCE."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Personal branding",
+        "Creative print collaboration",
+        "Purposeful action"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "garyvaynerchuk",
+    "analysis": {
+      "summary": "Gary's public profiles emphasize company building and entrepreneurship. His recent captions also promote patience, empathy and thoughtful responses to others; these published themes do not establish his private temperament.",
+      "claims": [
+        {
+          "id": "garyvaynerchuk-claim-1",
+          "category": "work",
+          "text": "Serial entrepreneur and chairman of VaynerX",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "garyvaynerchuk-linkedin",
+              "quote": "a serial entrepreneur and serves as the Chairman of VaynerX"
+            }
+          ]
+        },
+        {
+          "id": "garyvaynerchuk-claim-2",
+          "category": "work",
+          "text": "CEO and founder of VeeFriends",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "garyvaynerchuk-instagram",
+              "quote": "CEO/Founder @veefriends"
+            }
+          ]
+        },
+        {
+          "id": "garyvaynerchuk-claim-3",
+          "category": "interest",
+          "text": "Entrepreneurship",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "garyvaynerchuk-linkedin",
+              "quote": "Gary Vaynerchuk is a serial entrepreneur"
+            }
+          ]
+        },
+        {
+          "id": "garyvaynerchuk-claim-4",
+          "category": "interest",
+          "text": "Patience and external validation",
+          "kind": "inferred",
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "sourceId": "garyvaynerchuk-instagram",
+              "quote": "The lack of patience and the need for validation"
+            }
+          ]
+        },
+        {
+          "id": "garyvaynerchuk-claim-5",
+          "category": "quality",
+          "text": "Publicly calls for empathy and compassion",
+          "kind": "observed",
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "sourceId": "garyvaynerchuk-instagram",
+              "quote": "More empathy and compassion and thoughtfulness"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Entrepreneurship",
+        "Patience and external validation"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "grace-beverley-574a10102",
+    "analysis": {
+      "summary": "Grace's public profiles connect apparel, fitness businesses and creator work. Her podcast-related posts provide specific starting points in personal branding and visualizing goals, with no basis to infer a partner's required lifestyle.",
+      "claims": [
+        {
+          "id": "grace-beverley-574a10102-claim-1",
+          "category": "work",
+          "text": "Founder of TALA and Shreddy",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "grace-beverley-574a10102-linkedin",
+              "quote": "Founder of womenswear brand TALA, fitness tech brand Shreddy"
+            }
+          ]
+        },
+        {
+          "id": "grace-beverley-574a10102-claim-2",
+          "category": "work",
+          "text": "Identifies as a founder, investor and advisor",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "grace-beverley-574a10102-instagram",
+              "quote": "founder, investor + advisor"
+            }
+          ]
+        },
+        {
+          "id": "grace-beverley-574a10102-claim-3",
+          "category": "interest",
+          "text": "Personal branding",
+          "kind": "inferred",
+          "confidence": 0.73,
+          "evidence": [
+            {
+              "sourceId": "grace-beverley-574a10102-instagram",
+              "quote": "how to build a personal brand that actually gets you closer"
+            }
+          ]
+        },
+        {
+          "id": "grace-beverley-574a10102-claim-4",
+          "category": "interest",
+          "text": "Goal visualization",
+          "kind": "inferred",
+          "confidence": 0.67,
+          "evidence": [
+            {
+              "sourceId": "grace-beverley-574a10102-instagram",
+              "quote": "training your brain to actually become the person who can achieve your shiny future"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Personal branding",
+        "Goal visualization"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "codiesanchez",
+    "analysis": {
+      "summary": "Codie's public work focuses on business ownership, buying companies and helping owners grow. She hosts workshops and publishes direct messages about taking initiative; the sources do not establish her financial situation or personal relationship needs.",
+      "claims": [
+        {
+          "id": "codiesanchez-claim-1",
+          "category": "work",
+          "text": "Owner of Contrarian Thinking",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "codiesanchez-instagram",
+              "quote": "Owner, Contrarian Thinking"
+            }
+          ]
+        },
+        {
+          "id": "codiesanchez-claim-2",
+          "category": "work",
+          "text": "Hosts a Growth Accelerator Workshop for business owners",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "codiesanchez-instagram",
+              "quote": "I am hosting a Growth Accelerator Workshop for business owners."
+            }
+          ]
+        },
+        {
+          "id": "codiesanchez-claim-3",
+          "category": "interest",
+          "text": "Buying and growing businesses",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "codiesanchez-instagram",
+              "quote": "Helping you scale & buy profitable businesses"
+            }
+          ]
+        },
+        {
+          "id": "codiesanchez-claim-4",
+          "category": "interest",
+          "text": "Founder responsibilities",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "codiesanchez-instagram",
+              "quote": "As a founder you only have three jobs"
+            }
+          ]
+        },
+        {
+          "id": "codiesanchez-claim-5",
+          "category": "quality",
+          "text": "Published material encourages initiative",
+          "kind": "inferred",
+          "confidence": 0.65,
+          "evidence": [
+            {
+              "sourceId": "codiesanchez-linkedin",
+              "quote": "Stop Asking for Permission to Profit"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Buying and growing businesses",
+        "Founder responsibilities"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "leilahormozi",
+    "analysis": {
+      "summary": "Leila's public work concerns building businesses and leading teams. Her posts explicitly connect confidence to action and raise questions about leaders who avoid speaking up, offering a grounded contrast between encouragement and accountability.",
+      "claims": [
+        {
+          "id": "leilahormozi-claim-1",
+          "category": "work",
+          "text": "Chairwoman of Acquisition.com",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "leilahormozi-linkedin",
+              "quote": "Chairwoman of Acquisition.com"
+            }
+          ]
+        },
+        {
+          "id": "leilahormozi-claim-2",
+          "category": "work",
+          "text": "Identifies as a founder",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "leilahormozi-instagram",
+              "quote": "Founder & Chairwoman @acquisition"
+            }
+          ]
+        },
+        {
+          "id": "leilahormozi-claim-3",
+          "category": "interest",
+          "text": "Business scaling",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "leilahormozi-instagram",
+              "quote": "Get My Free Five Scaling Frameworks"
+            }
+          ]
+        },
+        {
+          "id": "leilahormozi-claim-4",
+          "category": "quality",
+          "text": "Publicly links confidence to evidence from action",
+          "kind": "observed",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "sourceId": "leilahormozi-instagram",
+              "quote": "Confidence requires evidence through action."
+            }
+          ]
+        },
+        {
+          "id": "leilahormozi-claim-5",
+          "category": "interest",
+          "text": "Leadership communication",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "leilahormozi-instagram",
+              "quote": "It’s not the aggressive leaders who do the most damage in most companies. It's the nice ones who stay quiet."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Business scaling",
+        "Leadership communication"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "alexhormozi",
+    "analysis": {
+      "summary": "Alex's public material is centered on starting and scaling companies, with a stated history of opening a gym. Posts discuss brand strength and the difficulty of ambitious projects; a business history alone does not establish a fitness hobby.",
+      "claims": [
+        {
+          "id": "alexhormozi-claim-1",
+          "category": "work",
+          "text": "Founder of Acquisition.com and co-founder of Skool",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "alexhormozi-instagram",
+              "quote": "Founder Acquisition.com, Co-Founder Skool.com."
+            }
+          ]
+        },
+        {
+          "id": "alexhormozi-claim-2",
+          "category": "work",
+          "text": "Describes starting a gym in 2013",
+          "kind": "observed",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "sourceId": "alexhormozi-linkedin",
+              "quote": "start a gym in 2013 changed my life forever"
+            }
+          ]
+        },
+        {
+          "id": "alexhormozi-claim-3",
+          "category": "interest",
+          "text": "Business scaling",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "alexhormozi-instagram",
+              "quote": "I talk about scaling businesses."
+            }
+          ]
+        },
+        {
+          "id": "alexhormozi-claim-4",
+          "category": "interest",
+          "text": "Brand building",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "alexhormozi-instagram",
+              "quote": "make your brand so strong"
+            }
+          ]
+        },
+        {
+          "id": "alexhormozi-claim-5",
+          "category": "interest",
+          "text": "Choosing ambitious projects",
+          "kind": "inferred",
+          "confidence": 0.64,
+          "evidence": [
+            {
+              "sourceId": "alexhormozi-instagram",
+              "quote": "Big goals and small goals are both hard."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Business scaling",
+        "Brand building",
+        "Choosing ambitious projects"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "austin-kleon-31116437b",
+    "analysis": {
+      "summary": "Austin writes about creativity and promotes a playful approach to making things. A music quotation is a possible conversation opening, but it is too little evidence to claim that music is an established hobby.",
+      "claims": [
+        {
+          "id": "austin-kleon-31116437b-claim-1",
+          "category": "work",
+          "text": "Author of Steal Like an Artist",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "austin-kleon-31116437b-linkedin",
+              "quote": "I’m the author of STEAL LIKE AN ARTIST"
+            }
+          ]
+        },
+        {
+          "id": "austin-kleon-31116437b-claim-2",
+          "category": "work",
+          "text": "Promotes Don't Call It Art: 10 Ways to Create Like a Kid",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "austin-kleon-31116437b-instagram",
+              "quote": "Newest one is DON’T CALL IT ART: 10 WAYS TO CREATE LIKE A KID"
+            }
+          ]
+        },
+        {
+          "id": "austin-kleon-31116437b-claim-3",
+          "category": "interest",
+          "text": "Playful creativity",
+          "kind": "inferred",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "sourceId": "austin-kleon-31116437b-instagram",
+              "quote": "10 WAYS TO CREATE LIKE A KID"
+            }
+          ]
+        },
+        {
+          "id": "austin-kleon-31116437b-claim-4",
+          "category": "interest",
+          "text": "Music as a conversation topic",
+          "kind": "inferred",
+          "confidence": 0.55,
+          "evidence": [
+            {
+              "sourceId": "austin-kleon-31116437b-instagram",
+              "quote": "Without music, life would be a mistake."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Playful creativity",
+        "Music as a conversation topic"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "gretchenrubin",
+    "analysis": {
+      "summary": "Gretchen writes reflective observations and created the Four Tendencies framework. Reading is directly supported as a personal activity, including a stated fondness for books with gods; relationship needs remain unstated.",
+      "claims": [
+        {
+          "id": "gretchenrubin-claim-1",
+          "category": "work",
+          "text": "Creator of the Four Tendencies framework",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "gretchenrubin-instagram",
+              "quote": "Creator of the Four Tendencies, a framework for achieving your aims."
+            }
+          ]
+        },
+        {
+          "id": "gretchenrubin-claim-2",
+          "category": "work",
+          "text": "Writes Secrets of Adulthood aphorisms",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "gretchenrubin-instagram",
+              "quote": "For years, I’ve been writing my “Secrets of Adulthood”—aphorisms that distill the lessons I’ve learned"
+            }
+          ]
+        },
+        {
+          "id": "gretchenrubin-claim-3",
+          "category": "hobby",
+          "text": "Reading",
+          "kind": "observed",
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "sourceId": "gretchenrubin-instagram",
+              "quote": "What I read in September: not that much, but great books."
+            }
+          ]
+        },
+        {
+          "id": "gretchenrubin-claim-4",
+          "category": "interest",
+          "text": "Books with mythic themes",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "gretchenrubin-instagram",
+              "quote": "I love a book with gods"
+            }
+          ]
+        },
+        {
+          "id": "gretchenrubin-claim-5",
+          "category": "interest",
+          "text": "Reflection and achieving goals",
+          "kind": "inferred",
+          "confidence": 0.73,
+          "evidence": [
+            {
+              "sourceId": "gretchenrubin-instagram",
+              "quote": "a framework for achieving your aims"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Books with mythic themes",
+        "Reflection and achieving goals"
+      ],
+      "hobbies": [
+        "Reading"
+      ],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Recurring daily routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "jamesclear",
+    "analysis": {
+      "summary": "James writes and speaks about habits, decisions and improvement. His newsletter and questions about motivation give the agent concrete topics to explore while leaving his own daily routine and personal requirements open.",
+      "claims": [
+        {
+          "id": "jamesclear-claim-1",
+          "category": "work",
+          "text": "Author of Atomic Habits",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "jamesclear-instagram",
+              "quote": "Author of Atomic Habits"
+            }
+          ]
+        },
+        {
+          "id": "jamesclear-claim-2",
+          "category": "work",
+          "text": "Writer and speaker focused on habits and decisions",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "jamesclear-linkedin",
+              "quote": "I'm a writer and speaker focused on habits, decision making, and continuous improvement"
+            }
+          ]
+        },
+        {
+          "id": "jamesclear-claim-3",
+          "category": "work",
+          "text": "Publishes the 3-2-1 newsletter",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "jamesclear-instagram",
+              "quote": "3-2-1 Thursday newsletter"
+            }
+          ]
+        },
+        {
+          "id": "jamesclear-claim-4",
+          "category": "interest",
+          "text": "Building habits",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "jamesclear-instagram",
+              "quote": "I write about building better habits."
+            }
+          ]
+        },
+        {
+          "id": "jamesclear-claim-5",
+          "category": "interest",
+          "text": "Motivation after reaching a goal",
+          "kind": "inferred",
+          "confidence": 0.71,
+          "evidence": [
+            {
+              "sourceId": "jamesclear-instagram",
+              "quote": "what is left to push you forward after you achieve it?"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Building habits",
+        "Motivation after reaching a goal"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "ryanholiday",
+    "analysis": {
+      "summary": "Ryan's public work includes books, a daily newsletter and discussions of Stoic ideas. He also shares conversations about attention and the environments that bring out one's best, alongside glimpses of the book-editing process.",
+      "claims": [
+        {
+          "id": "ryanholiday-claim-1",
+          "category": "work",
+          "text": "Author of The Obstacle Is the Way",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "ryanholiday-linkedin",
+              "quote": "author of Trust Me, I’m Lying; The Obstacle Is the Way"
+            }
+          ]
+        },
+        {
+          "id": "ryanholiday-claim-2",
+          "category": "work",
+          "text": "Publishes a daily newsletter",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "ryanholiday-instagram",
+              "quote": "Sign up for my daily newsletter"
+            }
+          ]
+        },
+        {
+          "id": "ryanholiday-claim-3",
+          "category": "interest",
+          "text": "Stoic ideas in books",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "ryanholiday-instagram",
+              "quote": "Stoic Virtues Series out now"
+            }
+          ]
+        },
+        {
+          "id": "ryanholiday-claim-4",
+          "category": "interest",
+          "text": "Attention and supportive environments",
+          "kind": "inferred",
+          "confidence": 0.71,
+          "evidence": [
+            {
+              "sourceId": "ryanholiday-instagram",
+              "quote": "why certain people and places bring out our best"
+            }
+          ]
+        },
+        {
+          "id": "ryanholiday-claim-5",
+          "category": "interest",
+          "text": "Writing and revision",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "ryanholiday-instagram",
+              "quote": "Here’s some of the edits before the book"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Stoic ideas in books",
+        "Attention and supportive environments",
+        "Writing and revision"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "markmanson",
+    "analysis": {
+      "summary": "Mark writes books, leads a venture and hosts a podcast. His public material explores learning through disagreement and questioning copied routines, giving the agent a way to discuss growth without inventing personal needs.",
+      "claims": [
+        {
+          "id": "markmanson-claim-1",
+          "category": "work",
+          "text": "Author of The Subtle Art of Not Giving a F*ck",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "markmanson-linkedin",
+              "quote": "I’m the author of The Subtle Art of Not Giving a F*ck"
+            }
+          ]
+        },
+        {
+          "id": "markmanson-claim-2",
+          "category": "work",
+          "text": "Founder and chief growth officer of Purpose",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "markmanson-instagram",
+              "quote": "Founder & Chief Growth Officer @purpose.app"
+            }
+          ]
+        },
+        {
+          "id": "markmanson-claim-3",
+          "category": "work",
+          "text": "Host of the Solved podcast",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "markmanson-instagram",
+              "quote": "Host of the @solvedpodcast"
+            }
+          ]
+        },
+        {
+          "id": "markmanson-claim-4",
+          "category": "interest",
+          "text": "Learning through disagreement",
+          "kind": "inferred",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "sourceId": "markmanson-instagram",
+              "quote": "Every time you win an argument, there’s a good chance you just skipped a chance to learn something."
+            }
+          ]
+        },
+        {
+          "id": "markmanson-claim-5",
+          "category": "interest",
+          "text": "Questioning borrowed routines",
+          "kind": "inferred",
+          "confidence": 0.7,
+          "evidence": [
+            {
+              "sourceId": "markmanson-instagram",
+              "quote": "Copying someone's morning routine won't give you their life."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Learning through disagreement",
+        "Questioning borrowed routines"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "htaha",
+    "analysis": {
+      "summary": "Hala's public work connects podcasting, media leadership and creator education. She describes building an audience by starting to publish and regularly shares platform strategy; this supports professional conversation, not assumptions about private social preferences.",
+      "claims": [
+        {
+          "id": "htaha-claim-1",
+          "category": "work",
+          "text": "CEO of YAP Media",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "htaha-instagram",
+              "quote": "CEO of YAP Media"
+            }
+          ]
+        },
+        {
+          "id": "htaha-claim-2",
+          "category": "work",
+          "text": "Identifies as a business podcast host",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "htaha-instagram",
+              "quote": "Business Podcast Host"
+            }
+          ]
+        },
+        {
+          "id": "htaha-claim-3",
+          "category": "interest",
+          "text": "Audience building",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "htaha-instagram",
+              "quote": "I built an audience because I started posting."
+            }
+          ]
+        },
+        {
+          "id": "htaha-claim-4",
+          "category": "interest",
+          "text": "Social-platform strategy",
+          "kind": "inferred",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "sourceId": "htaha-instagram",
+              "quote": "5 instagram updates you may have missed!"
+            }
+          ]
+        },
+        {
+          "id": "htaha-claim-5",
+          "category": "quality",
+          "text": "Publicly emphasizes beginning before an audience exists",
+          "kind": "observed",
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "sourceId": "htaha-instagram",
+              "quote": "I didn't start posting because I had an audience."
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Audience building",
+        "Social-platform strategy"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "aileenxu",
+    "analysis": {
+      "summary": "Aileen's public material presents life design as a creative practice, with journals, a workbook and the Resonance project. The evidence supports conversation about reflection and possibility, without establishing a daily journaling routine.",
+      "claims": [
+        {
+          "id": "aileenxu-claim-1",
+          "category": "work",
+          "text": "LinkedIn lists Resonance by Lavendaire",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "aileenxu-linkedin",
+              "quote": "Aileen Xu - Resonance by Lavendaire"
+            }
+          ]
+        },
+        {
+          "id": "aileenxu-claim-2",
+          "category": "quality",
+          "text": "Publicly frames life as a creative practice",
+          "kind": "observed",
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "sourceId": "aileenxu-linkedin",
+              "quote": "Life is an art. Make it your masterpiece."
+            }
+          ]
+        },
+        {
+          "id": "aileenxu-claim-3",
+          "category": "interest",
+          "text": "Life design",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "aileenxu-instagram",
+              "quote": "design your life @shoplavendaire"
+            }
+          ]
+        },
+        {
+          "id": "aileenxu-claim-4",
+          "category": "interest",
+          "text": "Journaling",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "aileenxu-instagram",
+              "quote": "opening a brand new journal that makes the future feel a little more exciting"
+            }
+          ]
+        },
+        {
+          "id": "aileenxu-claim-5",
+          "category": "work",
+          "text": "Promotes the 2027 Artist of Life Workbook",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "aileenxu-instagram",
+              "quote": "our launch film for the 2027 Artist of Life Workbook"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Life design",
+        "Journaling"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "nathanbarry",
+    "analysis": {
+      "summary": "Nathan builds tools and educational material for creators. His public work covers developing business skills and growing an email audience, with a book and podcast offering specific starting points for discussion.",
+      "claims": [
+        {
+          "id": "nathanbarry-claim-1",
+          "category": "work",
+          "text": "Founder of Kit",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "nathanbarry-instagram",
+              "quote": "Founder of @kit"
+            }
+          ]
+        },
+        {
+          "id": "nathanbarry-claim-2",
+          "category": "work",
+          "text": "Writing The Ladders of Wealth",
+          "kind": "observed",
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "sourceId": "nathanbarry-instagram",
+              "quote": "In my upcoming book, The Ladders of Wealth"
+            }
+          ]
+        },
+        {
+          "id": "nathanbarry-claim-3",
+          "category": "work",
+          "text": "Lists The Nathan Barry Show podcast",
+          "kind": "observed",
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "sourceId": "nathanbarry-instagram",
+              "quote": "Podcast: The Nathan Barry Show"
+            }
+          ]
+        },
+        {
+          "id": "nathanbarry-claim-4",
+          "category": "interest",
+          "text": "Helping creators build a livelihood",
+          "kind": "inferred",
+          "confidence": 0.75,
+          "evidence": [
+            {
+              "sourceId": "nathanbarry-instagram",
+              "quote": "Helping creators earn a living"
+            }
+          ]
+        },
+        {
+          "id": "nathanbarry-claim-5",
+          "category": "interest",
+          "text": "Email audience building",
+          "kind": "inferred",
+          "confidence": 0.71,
+          "evidence": [
+            {
+              "sourceId": "nathanbarry-instagram",
+              "quote": "more views on IG and more subscribers on your email"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "Helping creators build a livelihood",
+        "Email audience building"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  },
+  {
+    "personId": "amandanat",
+    "analysis": {
+      "summary": "Amanda combines marketing, writing and education through Zero Click Marketing and SparkToro. Her posts examine how distribution changes with AI and how brands communicate, while offering no reliable evidence of personal dating needs.",
+      "claims": [
+        {
+          "id": "amandanat-claim-1",
+          "category": "work",
+          "text": "Founder of Zero Click Marketing",
+          "kind": "observed",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "sourceId": "amandanat-linkedin",
+              "quote": "I’m the founder of Zero Click Marketing"
+            }
+          ]
+        },
+        {
+          "id": "amandanat-claim-2",
+          "category": "work",
+          "text": "Chief evangelist at SparkToro",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "amandanat-instagram",
+              "quote": "Chief Evangelist @sparktorohq"
+            }
+          ]
+        },
+        {
+          "id": "amandanat-claim-3",
+          "category": "work",
+          "text": "Identifies as a marketer, creator and writer",
+          "kind": "observed",
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "sourceId": "amandanat-instagram",
+              "quote": "Marketer, creator, writer"
+            }
+          ]
+        },
+        {
+          "id": "amandanat-claim-4",
+          "category": "interest",
+          "text": "AI and marketing distribution",
+          "kind": "inferred",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "sourceId": "amandanat-instagram",
+              "quote": "AI didn't kill clicks. This slow death has been happening for over 10 years; AI is accelerating it."
+            }
+          ]
+        },
+        {
+          "id": "amandanat-claim-5",
+          "category": "interest",
+          "text": "Marketing education",
+          "kind": "inferred",
+          "confidence": 0.72,
+          "evidence": [
+            {
+              "sourceId": "amandanat-instagram",
+              "quote": "Join our exclusive Zero Click Summer School"
+            }
+          ]
+        }
+      ],
+      "interests": [
+        "AI and marketing distribution",
+        "Marketing education"
+      ],
+      "hobbies": [],
+      "needs": [],
+      "unknowns": [
+        "Relationship intentions and availability are unknown.",
+        "Partner preferences and real-life chemistry are unknown.",
+        "Personal or partner needs were not explicitly stated.",
+        "Public content is a partial view; professional topics may not reflect leisure preferences.",
+        "Specific leisure hobbies and recurring routines are not established."
+      ],
+      "mode": "llm",
+      "model": "Codex offline analysis",
+      "createdAt": "2026-10-18T22:18:23.855Z"
+    }
+  }
+]

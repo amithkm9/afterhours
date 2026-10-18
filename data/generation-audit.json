@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-10-18T23:05:32.948Z",
+  "model": "Codex agents (offline)",
+  "generation": "offline",
+  "people": 25,
+  "distinctPersonAgents": 25,
+  "claims": 122,
+  "dates": 25,
+  "turns": 150,
+  "independentAssessments": 50,
+  "datesPerPerson": 2,
+  "rankedCandidatesPerPerson": 24,
+  "sourceFingerprint": "bd1dd27cdbd423070596eacdc6547ba5320cb9c5208e742fda8263e220119f43",
+  "method": "Saved replay of independently contextualized Codex person agents. New live dates use the separately configured runtime provider."
+}
