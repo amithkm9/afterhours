@@ -4,6 +4,11 @@ import { EngineError, normalizeText, verifySources, type JsonSchema } from './va
 export { normalizeProfileUrls } from './validation';
 export { startImport, pollImport } from './providers';
 
+export type RankingPerson = Pick<Person, 'id' | 'status' | 'analysis'>;
+export type RankingDate = Pick<DateSession, 'id' | 'personAId' | 'personBId' | 'status' | 'mode' | 'createdAt' | 'assessments'> & {
+  profileRevisions: Record<string, string>;
+};
+
 const UNKNOWN_FACTS = [
   'Relationship intentions and availability are unknown.',
   'Partner preferences and real-life chemistry are unknown.',
@@ -61,7 +66,7 @@ const assessmentSchema: JsonSchema = {
 };
 
 const sensitiveClaim = /\b(sexual orientation|heterosexual|homosexual|bisexual|gay|lesbian|transgender|racial|ethnicity|ethnic|religion|religious|christian|muslim|hindu|jewish|buddhist|political affiliation|democrat|republican|mental health|diagnosis|depression|anxiety disorder|income|net worth|single|married|divorced|relationship status)\b/i;
-function topicLabels(person: Person): string[] {
+function topicLabels(person: RankingPerson): string[] {
   if (!person.analysis) return [];
   const explicit = [...person.analysis.interests, ...person.analysis.hobbies].map(normalizeText);
   const text = person.analysis.claims.map(claim => `${claim.text} ${claim.evidence.map(item => item.quote).join(' ')}`).join(' ');
@@ -157,10 +162,10 @@ export function createDateSession(personAId: string, personBId: string, mode: En
 }
 
 /** Historic assessments may only influence the versions of the profiles they actually assessed. */
-export function dateMatchesProfiles(session: DateSession, a: Person, b: Person): boolean {
+export function dateMatchesProfiles(session: DateSession | RankingDate, a: RankingPerson, b: RankingPerson): boolean {
   return [a, b].every(person => {
-    const snapshot = session.profileSnapshots?.[person.id];
-    return Boolean(person.analysis && snapshot?.analysis && snapshot.analysis.createdAt === person.analysis.createdAt);
+    const revision = 'profileRevisions' in session ? session.profileRevisions[person.id] : session.profileSnapshots?.[person.id]?.analysis?.createdAt;
+    return Boolean(person.analysis && revision && revision === person.analysis.createdAt);
   });
 }
 
@@ -278,9 +283,9 @@ Cite 1–3 of YOUR OWN claim IDs. Do not use "I've been", "I usually", or "I'm a
   return { id: crypto.randomUUID(), personId: self.id, turn: index + 1, ...result, action, mode: session.mode, createdAt: new Date().toISOString() };
 }
 
-function profileComparison(person: Person, candidate: Person): { score: number; shared: string[]; coverage: number } {
-  const self = new Set(topicLabels(person).map(topic => topic.toLowerCase()));
-  const other = new Set(topicLabels(candidate).map(topic => topic.toLowerCase()));
+function profileComparison(person: RankingPerson, candidate: RankingPerson, topics?: Map<string, Set<string>>): { score: number; shared: string[]; coverage: number } {
+  const self = topics?.get(person.id) ?? new Set(topicLabels(person).map(topic => topic.toLowerCase()));
+  const other = topics?.get(candidate.id) ?? new Set(topicLabels(candidate).map(topic => topic.toLowerCase()));
   const shared = [...self].filter(topic => other.has(topic));
   const union = new Set([...self, ...other]).size;
   const coverage = self.size ? shared.length / self.size : 0;
@@ -333,11 +338,13 @@ export async function runDate(a: Person, b: Person, config: ProviderConfig = {})
   return session;
 }
 
-export function rankPeople(person: Person, people: Person[], dates: DateSession[] = []): RankingEntry[] {
+export function rankPeople(person: RankingPerson, people: RankingPerson[], dates: (DateSession | RankingDate)[] = []): RankingEntry[] {
   if (!person.analysis || person.status !== 'ready') return [];
+  const topics = new Map([person, ...people].map(candidate => [candidate.id, new Set(topicLabels(candidate).map(topic => topic.toLowerCase()))]));
+  const completedDates = dates.filter(session => session.status === 'complete' && (session.personAId === person.id || session.personBId === person.id)).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const entries = people.filter(candidate => candidate.id !== person.id && candidate.status === 'ready' && candidate.analysis).map((candidate): RankingEntry => {
-    const comparison = profileComparison(person, candidate);
-    const date = dates.filter(session => session.status === 'complete' && [session.personAId, session.personBId].includes(person.id) && [session.personAId, session.personBId].includes(candidate.id) && dateMatchesProfiles(session, person, candidate)).sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
+    const comparison = profileComparison(person, candidate, topics);
+    const date = completedDates.find(session => (session.personAId === candidate.id || session.personBId === candidate.id) && dateMatchesProfiles(session, person, candidate));
     const assessment = date?.assessments.find(value => value.personId === person.id && value.counterpartId === candidate.id);
     const hasDate = Boolean(date && assessment);
     const llmDate = hasDate && date!.mode === 'llm';
@@ -361,17 +368,18 @@ export function rankPeople(person: Person, people: Person[], dates: DateSession[
 export function schedulePairs(people: Person[]): ScheduledPair[] {
   const ready = people.filter(person => person.status === 'ready' && person.analysis).sort((a, b) => a.id.localeCompare(b.id));
   if (ready.length < 2) return [];
+  const topics = new Map(ready.map(person => [person.id, new Set(topicLabels(person).map(topic => topic.toLowerCase()))]));
   const chain = [ready[0]];
   const remaining = ready.slice(1);
   while (remaining.length) {
     const previous = chain.at(-1)!;
-    remaining.sort((a, b) => profileComparison(previous, b).score - profileComparison(previous, a).score || a.id.localeCompare(b.id));
+    remaining.sort((a, b) => profileComparison(previous, b, topics).score - profileComparison(previous, a, topics).score || a.id.localeCompare(b.id));
     chain.push(remaining.shift()!);
   }
   const pairs: ScheduledPair[] = [];
   for (let index = 0; index < (chain.length === 2 ? 1 : chain.length); index++) {
     const a = chain[index]; const b = chain[(index + 1) % chain.length];
-    pairs.push({ personAId: a.id, personBId: b.id, profileScore: Math.round((profileComparison(a, b).score + profileComparison(b, a).score) / 2) });
+    pairs.push({ personAId: a.id, personBId: b.id, profileScore: Math.round((profileComparison(a, b, topics).score + profileComparison(b, a, topics).score) / 2) });
   }
   return pairs;
 }

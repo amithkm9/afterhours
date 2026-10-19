@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { buildLiveClient } from "./build-live-client.mjs";
 
-// Use the pinned Vite build's module/asset paths, changing only deployment
-// identity and the database binding. Never deploy the Sites placeholder ID.
+// Preserve the API Worker and D1 binding while serving the live UI as static
+// assets, so page rendering consumes no Worker CPU. Never deploy a placeholder ID.
 const [databaseId, databaseName = "after-hours-db"] = process.argv.slice(2);
 if (!databaseId || !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(databaseId)
     || databaseId === "00000000-0000-4000-8000-000000000000") {
@@ -23,5 +24,13 @@ config.d1_databases = [{
   database_id: databaseId,
   migrations_dir: "../../drizzle",
 }];
+const client = await buildLiveClient();
+config.assets = {
+  ...config.assets,
+  directory: "../client",
+  not_found_handling: "single-page-application",
+  run_worker_first: ["/api/*"],
+};
 writeFileSync(output, `${JSON.stringify(config, null, 2)}\n`);
+console.log(`Built live static client: ${JSON.stringify(client)}`);
 console.log(`Prepared ${fileURLToPath(output)}. No deployment was performed.`);

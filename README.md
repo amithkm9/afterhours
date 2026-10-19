@@ -6,7 +6,7 @@ After Hours turns a person's LinkedIn and public Instagram into an evidence-back
 
 [Open the website](https://after-hours-agents.amithkm9.workers.dev) · [Explore the saved demo](https://after-hours-agents.amithkm9.workers.dev/?demo=1) · [Deployment guide](docs/DEPLOYMENT.md) · [Submission checklist](docs/SUBMISSION.md)
 
-> **Deployment status — 19 October 2026:** Cloudflare confirmed deployment. An HTTP request returned the app HTML, but HTTPS connection checks failed immediately after the new subdomain was registered. Hosted end-to-end verification and the YouTube upload are still pending. See [current status](docs/STATUS.md).
+> **Live audit — 19 October 2026:** HTTPS and the saved 25-person demo work. Fresh import failed because the platform blocked retrieval; new date generation exhausted the anonymous provider quota. Intermittent Worker resource-limit errors were also observed. A local optimization is ready but awaits deployment. This is **not a fully passing submission**. See the [live audit](docs/LIVE-AUDIT.md).
 >
 > All dates are simulations. The people have not participated or endorsed the results. Public interests do not establish relationship availability, partner preferences, or real romantic compatibility.
 
@@ -53,11 +53,12 @@ The saved view disables editing. Reading it does not require fresh scraping or i
 
 ## System architecture
 
-The frontend, API, and agent orchestration are served by a Cloudflare Worker. D1 holds durable state; external providers perform retrieval and inference.
+The prepared Cloudflare deployment serves the actual React interface as static assets, with `/api/*` routed to the Worker. D1 holds durable state; external providers perform retrieval and inference. This static-frontend optimization is built locally and awaits redeployment; the initially deployed version renders through Vinext.
 
 ```mermaid
 flowchart TB
-    Visitor[Visitor in browser] --> UI[React interface]
+    Assets[Cloudflare static assets] --> UI[React interface]
+    Visitor[Visitor in browser] --> UI
     UI -->|Same-origin requests and session cookie| API[Vinext API routes]
     subgraph Worker[Cloudflare Worker]
         API --> Service[Job orchestration and ownership checks]
@@ -283,7 +284,7 @@ This creates explicitly labeled rules-based output in a separate file. It is not
 
 ## Validation
 
-The last recorded application check passed **46 tests**, TypeScript checking, lint, and the production build. The standalone Cloudflare deployment configuration also passed Wrangler's dry run. These checks do not establish success for arbitrary fresh profiles on the deployed website.
+The last recorded application check passed **47 tests**, TypeScript checking, lint, and the production build. The standalone Cloudflare deployment configuration also passed Wrangler's dry run. These checks do not establish success for arbitrary fresh profiles on the deployed website.
 
 ```sh
 npm test
@@ -298,10 +299,11 @@ Tests cover unsafe URLs, account mismatches, private sources, exact quotations, 
 
 ### Known limits
 
-- LinkedIn can return login walls, and public Instagram retrieval can be blocked. Fresh hosted ingestion remains unverified; unavailable source data produces a visible error.
-- Anonymous model quotas and upstream availability can delay or stop new runs. Apify/Groq access depends on the user's credentials and account allowance.
+- Fresh hosted ingestion was tested with Ann Handley’s public account pair and failed after three blocked retrieval attempts. No source records or analysis were fabricated.
+- A fresh hosted Ali Abdaal/Sahil Bloom date failed with `FREE_LIMIT` after three spaced attempts and zero turns. Apify/Groq remain optional, credential-dependent paths that were not live-tested.
 - The saved cohort demonstrates simulated conversations, not actual participation, relationship availability, or calibrated romantic compatibility.
-- The local 2:40 video is a draft. Hosted-flow verification and an accessible YouTube upload are still required for submission.
+- Intermittent Cloudflare `1102` resource-limit failures occurred. A static frontend and smaller ranking queries are prepared; post-deployment reliability remains unverified.
+- A 2:51.854 narrated live screenshot walkthrough is available locally at `outputs/after-hours-live-walkthrough.mp4`. A public YouTube URL is still required.
 
 ## Project map
 

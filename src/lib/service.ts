@@ -4,7 +4,7 @@ import { analyzePerson, assessDate, createDateSession, dateMatchesProfiles, gene
 import { modelEnabled, modelName } from './providers';
 import type { DateSession, ImportJob, Person, ProviderConfig } from './types';
 import { EngineError, verifyProfileIdentity } from './validation';
-import { createEntityJob, decrypt, DEMO_OWNER, encrypt, enqueueAnalysisJob, getRecord, leaseJob, listRecords, replaceDemo, reserveAnonymousModel, saveRecord } from './store';
+import { createEntityJob, decrypt, DEMO_OWNER, encrypt, enqueueAnalysisJob, getRecord, leaseJob, listRankingRecords, listRecords, replaceDemo, reserveAnonymousModel, saveRecord } from './store';
 
 export interface Job {
   id: string; kind: 'import' | 'analysis' | 'date'; status: 'pending' | 'running' | 'complete' | 'failed';
@@ -129,7 +129,7 @@ export async function scheduleCohort(owner: string) {
 }
 
 export async function rankings(owner: string, personId: string) {
-  const [people, dates] = await Promise.all([listRecords<Person>('person', owner), listRecords<DateSession>('date', owner)]);
+  const { people, dates } = await listRankingRecords(owner);
   const person = people.find(p => p.id === personId);
   if (!person) throw new EngineError('NOT_FOUND', 'Profile not found.', false, 404);
   return { rankings: rankPeople(person, people, dates) };

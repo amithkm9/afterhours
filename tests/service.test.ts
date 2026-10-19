@@ -4,7 +4,8 @@ import { resetDatabase, testEnvironment } from './helpers/d1';
 import type { DateSession, Person } from '../src/lib/types';
 import type { Job } from '../src/lib/service';
 const { analyze, configFor, importPerson, processNext, rankings, startDate, stateFor, updateSettings } = await import('../src/lib/service');
-const { getRecord, listRecords, saveRecord } = await import('../src/lib/store');
+const { getRecord, listRankingRecords, listRecords, saveRecord } = await import('../src/lib/store');
+const { rankPeople } = await import('../src/lib/engine');
 
 test('saved cohort initializes once, ranks all other people and reuses completed demo dates', async () => {
   const database = resetDatabase();
@@ -26,6 +27,32 @@ test('saved cohort initializes once, ranks all other people and reuses completed
     assert.equal((await stateFor('owner-a')).dates.length, 25);
     const cachedImport = await importPerson('owner-a', { linkedinUrl: state.people[0].linkedinUrl, instagramUrl: state.people[0].instagramUrl });
     assert.equal(cachedImport.reused, true);
+  } finally { database.close(); }
+});
+
+test('lightweight ranking records preserve every score and session override without loading date transcripts', async () => {
+  const database = resetDatabase();
+  try {
+    const full = await stateFor('owner-a');
+    const compact = await listRankingRecords('owner-a');
+    assert.ok(JSON.stringify(compact).length < JSON.stringify({ people: full.people, dates: full.dates }).length / 3);
+    assert.ok(compact.dates.every(date => !('turns' in date) && !('profileSnapshots' in date)));
+    assert.ok(compact.people.every(person => typeof person.analysis === 'object' && Array.isArray(person.analysis!.claims)));
+    assert.ok(compact.dates.every(date => Array.isArray(date.assessments) && typeof date.profileRevisions === 'object' && Object.keys(date.profileRevisions).length === 2));
+    for (const person of full.people) assert.deepEqual(rankPeople(person, compact.people, compact.dates), rankPeople(person, full.people, full.dates));
+    await saveRecord('date', { ...full.dates[0], id: 'legacy-without-snapshots', profileSnapshots: undefined }, 'owner-a');
+    const legacy = await listRankingRecords('owner-a');
+    assert.deepEqual(legacy.dates.find(date => date.id === 'legacy-without-snapshots')!.profileRevisions, {});
+    assert.deepEqual(rankPeople(full.people[0], legacy.people, legacy.dates), rankPeople(full.people[0], full.people, full.dates));
+    const person = full.people[0];
+    await saveRecord('person', { ...person, analysis: { ...person.analysis!, createdAt: '2099-01-01T00:00:00.000Z' } }, 'owner-a');
+    const changed = await listRankingRecords('owner-a');
+    assert.equal(changed.people.length, 25);
+    const own = changed.people.find(value => value.id === person.id)!;
+    assert.equal(own.analysis!.createdAt, '2099-01-01T00:00:00.000Z');
+    assert.ok(rankPeople(own, changed.people, changed.dates).every(entry => entry.basis === 'profile'));
+    const stranger = await listRankingRecords('owner-b');
+    assert.equal(stranger.people.find(value => value.id === person.id)!.analysis!.createdAt, person.analysis!.createdAt);
   } finally { database.close(); }
 });
 

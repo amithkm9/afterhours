@@ -2,7 +2,7 @@
 
 ## Automated application checks
 
-The final post-cleanup suite has **46 passing tests**. TypeScript checking, lint, the official Sites production build, and the read-only demo export also passed. The source package excludes ignored/local artifacts; the credential-pattern scan found zero matches. A pattern scan is not a guarantee that arbitrary secrets are absent.
+The final post-cleanup suite has **47 passing tests**. TypeScript checking, lint, the official Sites production build, and the read-only demo export also passed. The source package excludes ignored/local artifacts; the credential-pattern scan found zero matches. A pattern scan is not a guarantee that arbitrary secrets are absent.
 
 Coverage includes URL validation; account/privacy/source binding; exact quotations; independent agent contexts; alternating turns; directional rankings and cohort coverage; bounded scraper requests; public HTML parsers; session ownership; credential encryption; transactional demo replacement; atomic leases; actual HTTP handlers; anonymous-provider quota reservations; and immutable date evidence after reanalysis.
 
@@ -38,4 +38,4 @@ Chrome also opened the updated read-only export and displayed the 25-person/25-d
 
 Safari opened the actual React read-only export and exercised cohort navigation, profiles, quotations, source links, conversations, assessments, and 24-candidate rankings. This export cannot perform fresh imports or generation.
 
-The sandbox denies listening sockets (`EPERM`); hosting Git DNS still fails for `git.chatgpt-team.site`. Production migrations, hosted ingestion/generation, and public evaluator access remain unverified. Optional live Apify calls have not been executed without a token. No public website, public repository, or YouTube upload is claimed without its verified URL.
+The sandbox denies local listening sockets (`EPERM`), but the actual Cloudflare HTTPS deployment was tested through Safari and HTTP requests. Saved profiles, all 600 ranking entries, conversations, assessments, session isolation, input validation, and explicit retrieval failures were exercised. Fresh import and model generation failed; intermittent Worker resource limits were observed. See [LIVE-AUDIT.md](LIVE-AUDIT.md) for the production results and unreleased optimization boundary. Optional Apify/Groq calls and YouTube publication remain unverified.

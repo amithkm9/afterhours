@@ -1,37 +1,40 @@
-# Build status
+# Build status — 19 October 2026
 
-The application and completed 25-person model demo are implemented and locally validated. **The challenge is not yet submission-complete:** HTTPS accessibility, a YouTube upload, and fresh hosted link ingestion remain unverified or unfinished.
+**The saved HTTPS demonstration works, but the complete challenge requirements do not yet pass.** See [the live audit](LIVE-AUDIT.md) for observed results and exact evidence.
 
-## Completed
+## Verified
 
-- 25 real public people with corroborated LinkedIn/public Instagram pairs, 50 saved source records, and 25 local portraits.
-- 25 offline LLM analyses containing 122 claims with exact quotations, provenance, confidence, observed/inferred labels, and explicit unknowns.
-- 25 retained person agents completed 25 dates: 150 alternating turns and 50 independent assessments. Every person has two dates.
-- All 25 dates contain immutable participant-profile snapshots, preserving the evidence used before later reanalysis.
-- Every person has 24 ranked candidates: two with date evidence and 22 explicitly untested profile estimates.
-- Atomic duplicate-request prevention and failed-date resume retain completed turns and assessments. Frontend retries, profile-first import navigation, queue feedback, and shortlist refresh were repaired.
-- Session-isolated persistence, encrypted optional credentials, resumable leased jobs, direct public-page parsers, anonymous inference, and optional Groq/Apify adapters.
-- Standalone Cloudflare configuration preparation and Wrangler deployment dry run passed; no remote deployment was performed.
-- Final post-cleanup validation passed: 46 tests, TypeScript checking, lint, the official Sites production build, and the read-only demo export.
-- Safari QA exercised the actual React read-only export: profiles, source quotations, conversations, assessments, and rankings.
-- A fresh anonymous `openai-fast` smoke run completed six validated turns and two independent assessments. This proves a provider-level path, not hosted ingestion or semantic accuracy of every reply.
+- Live website: https://after-hours-agents.amithkm9.workers.dev
+- Read-only completed example: https://after-hours-agents.amithkm9.workers.dev/?demo=1
+- 25 real public people, 50 saved source documents, 122 quoted profile claims.
+- 25 saved offline-model dates, 150 turns, 50 independent assessments, and two dates per person.
+- All 25 ranking endpoints: 24 candidates each; two date-informed matches and 22 profile estimates. Three initial resource-limit failures succeeded on sequential retry.
+- Live Safari checks: profile evidence, source accordions, immutable date-profile evidence, conversations, independent assessments, ranking explanations, search, pending-profile filter, explanation page, and read-only demo.
+- A fresh failed import persisted after browser reload; the shared demo remained at 25 people.
+- Invalid inputs, cross-origin writes, duplicate-date prevention, and visitor isolation behaved as expected.
+- 47 local tests, TypeScript, lint, production build, and the prepared Cloudflare dry run passed.
+- Public GitHub repository: https://github.com/amithkm9/afterhours. The previously verified remote source commit is `adb2cf7`; newer local changes require push verification.
 
-## Remaining submission gaps
+## Video and captures
 
-- **Public live/demo hosting:** Cloudflare confirmed deployment at https://after-hours-agents.amithkm9.workers.dev (version `7840fbbd-d600-4deb-9bdd-c8361135c4cd`). An HTTP probe returned the actual app HTML; initial HTTPS probes failed during TLS setup after subdomain creation. The saved demo is at `/?demo=1`. Successful HTTPS access and hosted functional checks remain pending.
-- **Fresh links on a hosted app:** unverified. Direct LinkedIn retrieval can return an authentication wall. Optional Apify requires a valid account/token and available allowance.
-- **Public GitHub:** https://github.com/amithkm9/afterhours is public. The user pushed commit `adb2cf798d9a54e377b58a57c4770386b26343c7`; remote commit and key file hashes were verified. Subsequent cleanup/deployment-guide changes still need pushing if shell DNS remains blocked.
-- **YouTube:** a 2:40 local draft exists at `outputs/after-hours-walkthrough-draft.mp4`, using saved demo captures and explicitly disclosing that hosting is pending. It has not been uploaded; no YouTube URL is recorded. The required video is at most three minutes, shows profiles before rankings, and includes actual agent exchanges.
-- **Runtime browser check:** this sandbox rejects listening sockets with `EPERM`; handler tests and the read-only export do not replace a hosted browser-to-server check.
+`outputs/after-hours-live-walkthrough.mp4` is a **2:51.854 narrated walkthrough of genuine live-browser screenshots**, with profile analysis first, agent exchanges, assessments, rankings, and fresh-link input/failure. It explicitly labels saved offline-agent conversations and does not claim that the failed fresh flows pass. It is an edited screenshot walkthrough, not a continuous screen recording.
 
-## Next actions
+English captions and a transcript accompany the video. Raw captures are in `work/live-video/shots/`. The earlier 2:40 local draft is preserved separately. **No YouTube upload or public video URL has been verified.**
 
-1. Retain the validated completed model cohort and evidence snapshots in the final source commit.
-2. Push final source/documentation changes and verify HTTPS evaluator access to the deployed Worker.
-3. Test fresh official links, analysis, dates, rankings, reload persistence, and retrieval failures on the hosted app.
-4. Push final cleanup changes; record and upload the hosted flow within three minutes.
-5. Fill `docs/SUBMISSION.md` with actual verified URLs.
+## Remaining blockers
 
-For standalone hosting steps see `docs/DEPLOYMENT.md`.
+1. A fresh Ann Handley LinkedIn/Instagram import failed after three platform-blocked retrieval attempts, with zero sources and no analysis.
+2. A new Ali Abdaal/Sahil Bloom model date failed after three spaced `FREE_LIMIT` responses, with zero turns. A prior provider smoke success does not override this deployed failure.
+3. Intermittent Cloudflare `1102` resource-limit errors affected the homepage, rankings, and a single date-processing request.
+4. A static frontend and compact ranking queries are built locally. The CLI could not resolve the Cloudflare deployment API, so deployment and post-deployment verification remain pending. These changes do not resolve missing scraper/model availability.
+5. Upload the video to YouTube, verify the public source push, and complete the submission fields.
 
-See `docs/REQUIREMENTS.md` for the challenge audit and `docs/VALIDATION.md` for verification boundaries.
+## Next concrete deployment step
+
+The built configuration preserves the existing D1 binding and secret. From this checkout:
+
+```sh
+npx wrangler deploy --config dist/server/wrangler.cloudflare.json
+```
+
+Then recheck the entry page, APIs, and new date processing. See [deployment instructions](DEPLOYMENT.md) to rebuild this configuration from a fresh checkout. Do not describe all requirements as passing until a genuinely new import and new model date complete on the hosted app.

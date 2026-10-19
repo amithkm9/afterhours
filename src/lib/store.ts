@@ -1,4 +1,5 @@
 import { env } from 'cloudflare:workers';
+import type { RankingDate, RankingPerson } from './engine';
 
 export const DEMO_OWNER = 'demo-v1';
 
@@ -10,13 +11,29 @@ function database(): D1Database {
 export async function listRecords<T>(kind: string, owner: string, includeDemo = true): Promise<T[]> {
   const result = await database().prepare('SELECT value FROM records WHERE kind = ? AND (owner = ? OR owner = ?) ORDER BY CASE WHEN owner = ? THEN 0 ELSE 1 END, created_at ASC')
     .bind(kind, owner, includeDemo ? DEMO_OWNER : owner, owner).all<{ value: string }>();
+  return decodeRecords<T>(result.results);
+}
+
+function decodeRecords<T>(rows: { value: string }[]): T[] {
   const seen = new Set<string>();
-  return result.results.flatMap(row => {
+  return rows.flatMap(row => {
     const value = JSON.parse(row.value) as T & { id: string };
     if (seen.has(value.id)) return [];
     seen.add(value.id);
     return [value];
   });
+}
+
+/** Rankings need claim summaries and assessment scores, never full transcripts or source snapshots. */
+export async function listRankingRecords(owner: string): Promise<{ people: RankingPerson[]; dates: RankingDate[] }> {
+  const order = ' WHERE kind = ? AND (owner = ? OR owner = ?) ORDER BY CASE WHEN owner = ? THEN 0 ELSE 1 END, created_at ASC';
+  const [people, dates] = await Promise.all([
+    database().prepare("SELECT json_object('id', json_extract(value, '$.id'), 'status', json_extract(value, '$.status'), 'analysis', json_extract(value, '$.analysis')) AS value FROM records" + order)
+      .bind('person', owner, DEMO_OWNER, owner).all<{ value: string }>(),
+    database().prepare("SELECT json_object('id', json_extract(value, '$.id'), 'personAId', json_extract(value, '$.personAId'), 'personBId', json_extract(value, '$.personBId'), 'status', json_extract(value, '$.status'), 'mode', json_extract(value, '$.mode'), 'createdAt', json_extract(value, '$.createdAt'), 'assessments', json_extract(value, '$.assessments'), 'profileRevisions', (SELECT json_group_object(key, json_extract(value, '$.analysis.createdAt')) FROM json_each(records.value, '$.profileSnapshots'))) AS value FROM records" + order)
+      .bind('date', owner, DEMO_OWNER, owner).all<{ value: string }>(),
+  ]);
+  return { people: decodeRecords<RankingPerson>(people.results), dates: decodeRecords<RankingDate>(dates.results) };
 }
 
 export async function getRecord<T>(kind: string, id: string, owner: string, includeDemo = true): Promise<T | null> {
