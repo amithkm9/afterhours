@@ -12,7 +12,7 @@ After Hours turns a person's LinkedIn and public Instagram into an evidence-back
 
 ## Explore this README
 
-[Experience](#the-experience) · [Architecture](#system-architecture) · [Evidence](#from-two-links-to-a-profile) · [Agent dates](#how-the-agents-date) · [Rankings](#how-rankings-work) · [Persistence](#jobs-and-persistence) · [Local setup](#run-locally) · [Deployment](#deploy) · [Validation](#validation) · [Project map](#project-map)
+[Experience](#the-experience) · [Screenshots](#screenshots) · [Architecture](#system-architecture) · [Evidence](#from-two-links-to-a-profile) · [Agent dates](#how-the-agents-date) · [Rankings](#how-rankings-work) · [Persistence](#jobs-and-persistence) · [Local setup](#run-locally) · [Deployment](#deploy) · [Validation](#validation) · [Project map](#project-map)
 
 ## The experience
 
@@ -48,6 +48,63 @@ Open the [saved demo](https://after-hours-agents.amithkm9.workers.dev/?demo=1):
 - Use **Try your own links** to enter the live workspace.
 
 The saved view disables editing. Reading it does not require fresh scraping or inference. To inspect it without hosting, generate the [standalone HTML export](#saved-demo-and-local-artifacts).
+
+</details>
+
+## Screenshots
+
+Captured from the live HTTPS website on 19 October 2026. Profiles, conversations, and rankings below show the **saved offline-agent example**. Click an image to open it at full size; expand the sections to follow the flow.
+
+[![After Hours homepage with the saved 25-person example](docs/screenshots/home.png)](docs/screenshots/home.png)
+
+*The saved example opens with 25 people, 25 analyzed profiles, and 25 completed agent conversations.*
+
+<details>
+<summary><strong>1. Read a profile and inspect its evidence</strong></summary>
+
+[![Ali Abdaal profile with interests, explicit unknowns, and an expanded source quotation](docs/screenshots/profile-evidence.png)](docs/screenshots/profile-evidence.png)
+
+*Observed claims and inferred interests are labeled separately. An expanded claim exposes its quote and source link; unstated hobbies and needs remain unknown.*
+
+</details>
+
+<details>
+<summary><strong>2. Follow the agents' conversation</strong></summary>
+
+[![Adam and James agents discussing curiosity and attentive follow-up during a simulated date](docs/screenshots/agent-conversation.png)](docs/screenshots/agent-conversation.png)
+
+*The saved six-turn simulation moves from planning a coffee walk to a substantive question and response. These are agent-generated messages, not statements from the real people.*
+
+</details>
+
+<details>
+<summary><strong>3. Compare two independent assessments</strong></summary>
+
+[![Both agents independently describe the connection, limitations, and a follow-up question](docs/screenshots/independent-assessments.png)](docs/screenshots/independent-assessments.png)
+
+*Each agent assesses the exchange separately, including what remains unresolved. The app does not treat these assessments as proof of real romantic compatibility.*
+
+</details>
+
+<details>
+<summary><strong>4. Explore the ranked shortlist</strong></summary>
+
+[![Ranked shortlist with date-informed matches and profile-estimate labels](docs/screenshots/rankings.png)](docs/screenshots/rankings.png)
+
+*Every saved person has 24 ranked candidates: two informed by completed dates and 22 labeled profile estimates.*
+
+</details>
+
+<details>
+<summary><strong>5. Enter two links and see the actual live-test result</strong></summary>
+
+[![Live form filled with Ann Handley's official LinkedIn and public Instagram URLs](docs/screenshots/profile-input.png)](docs/screenshots/profile-input.png)
+
+*The live form accepts both official account URLs for the same adult.*
+
+[![Fresh import visibly reports platform access blocking, zero sources, and zero insights](docs/screenshots/import-blocked.png)](docs/screenshots/import-blocked.png)
+
+*This fresh import was blocked by the platform. The application showed the error and did not invent source data or an analysis. See the [live audit](docs/LIVE-AUDIT.md) for outstanding requirements.*
 
 </details>
 
