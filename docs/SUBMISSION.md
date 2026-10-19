@@ -19,8 +19,8 @@ New model operations use anonymous Pollinations `openai-fast` without an API key
 ## Required links
 
 - YouTube video, at most three minutes: **2:40 local draft recorded; final hosted-flow recording and YouTube upload pending**.
-- Completed 25-person demo: local `outputs/after-hours-demo.html`; **public URL pending deployment**.
-- Live website accepting evaluator-provided links: **pending deployment and hosted fresh-link verification**.
+- Completed 25-person demo: https://after-hours-agents.amithkm9.workers.dev/?demo=1 — **deployed; HTTPS accessibility and hosted verification pending**.
+- Live website accepting evaluator-provided links: https://after-hours-agents.amithkm9.workers.dev — **deployed; HTTPS accessibility and hosted fresh-link verification pending**.
 - Public GitHub repository: https://github.com/amithkm9/afterhours — **public; source commit `adb2cf7` verified on GitHub**.
 
 ## Acceptance checks

@@ -1,6 +1,6 @@
 # Build status
 
-The application and completed 25-person model demo are implemented and locally validated. **The challenge is not yet submission-complete:** public hosting, a YouTube upload, and fresh hosted link ingestion remain unfinished.
+The application and completed 25-person model demo are implemented and locally validated. **The challenge is not yet submission-complete:** HTTPS accessibility, a YouTube upload, and fresh hosted link ingestion remain unverified or unfinished.
 
 ## Completed
 
@@ -18,7 +18,7 @@ The application and completed 25-person model demo are implemented and locally v
 
 ## Remaining submission gaps
 
-- **Public live/demo hosting:** the source helper retry at 23:25 UTC on 2026-10-18 still failed to resolve `git.chatgpt-team.site`. No successful Sites source push or verified deployment URL is recorded.
+- **Public live/demo hosting:** Cloudflare confirmed deployment at https://after-hours-agents.amithkm9.workers.dev (version `7840fbbd-d600-4deb-9bdd-c8361135c4cd`). An HTTP probe returned the actual app HTML; initial HTTPS probes failed during TLS setup after subdomain creation. The saved demo is at `/?demo=1`. Successful HTTPS access and hosted functional checks remain pending.
 - **Fresh links on a hosted app:** unverified. Direct LinkedIn retrieval can return an authentication wall. Optional Apify requires a valid account/token and available allowance.
 - **Public GitHub:** https://github.com/amithkm9/afterhours is public. The user pushed commit `adb2cf798d9a54e377b58a57c4770386b26343c7`; remote commit and key file hashes were verified. Subsequent cleanup/deployment-guide changes still need pushing if shell DNS remains blocked.
 - **YouTube:** a 2:40 local draft exists at `outputs/after-hours-walkthrough-draft.mp4`, using saved demo captures and explicitly disclosing that hosting is pending. It has not been uploaded; no YouTube URL is recorded. The required video is at most three minutes, shows profiles before rankings, and includes actual agent exchanges.
@@ -27,7 +27,7 @@ The application and completed 25-person model demo are implemented and locally v
 ## Next actions
 
 1. Retain the validated completed model cohort and evidence snapshots in the final source commit.
-2. Commit/push the exact source and deploy when hosting connectivity works; verify evaluator access.
+2. Push final source/documentation changes and verify HTTPS evaluator access to the deployed Worker.
 3. Test fresh official links, analysis, dates, rankings, reload persistence, and retrieval failures on the hosted app.
 4. Push final cleanup changes; record and upload the hosted flow within three minutes.
 5. Fill `docs/SUBMISSION.md` with actual verified URLs.

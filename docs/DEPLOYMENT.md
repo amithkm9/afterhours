@@ -2,7 +2,7 @@
 
 This checkout builds a Cloudflare Worker with a `DB` D1 binding. Vercel's Next.js import preset cannot run it unchanged. Vinext can target other platforms, but that requires a different server adapter and a replacement for this app's Cloudflare database/environment access.
 
-These commands deploy to your own Cloudflare account, independently of ChatGPT Sites. Use a Workers Free account for the challenge; do not enable paid plans or paid inference. Free quotas can still stop requests. Production deployment and fresh-link ingestion have not yet been verified.
+These commands deploy to your own Cloudflare account, independently of ChatGPT Sites. Use a Workers Free account for the challenge; do not enable paid plans or paid inference. Free quotas can still stop requests. Cloudflare reported a successful deployment for this project; initial HTTPS checks and the fresh-link flow remain unverified. See `STATUS.md` for the latest observation.
 
 ## 1. Install and authenticate
 
@@ -36,6 +36,8 @@ openssl rand -hex 32 | npx wrangler secret put APP_SECRET --config dist/server/w
 ```
 
 Run the secret command once for a new deployment. Preserve the same secret on subsequent releases: changing it makes existing saved provider credentials unreadable. Do not share the app until this command succeeds. Optional provider keys are unnecessary for the saved demo and anonymous model path.
+
+On a new account, choose **Yes** when Wrangler asks to register a `workers.dev` subdomain, then select an available name.
 
 Wrangler prints the actual `https://after-hours-agents.<your-subdomain>.workers.dev` URL. Use the printed URL rather than an invented address. This is a Workers deployment, not a Pages static upload. The same site opens the completed demo and supports the live input flow.
 
